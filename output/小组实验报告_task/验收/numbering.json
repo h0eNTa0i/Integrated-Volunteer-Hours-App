@@ -1,0 +1,535 @@
+{
+  "status": "failed",
+  "issues": [
+    {
+      "part": "/word/document.xml",
+      "paragraph": 34,
+      "kind": "list",
+      "text": "1. 综合运用软件工程的思想，协同完成一个软件项目的开发，掌软件工程相关的技术和方法；",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 35,
+      "kind": "list",
+      "text": "2. 组成小组进行选题，通过调研完成项目的需求分析，并详细说明小组成员的分工、项目的时间管理等方面。",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 36,
+      "kind": "list",
+      "text": "3. 根据需求分析进行总体设计、详细设计、编码与测试等。",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 39,
+      "kind": "list",
+      "text": "1. 问题概述、需求分析：正确使用相关工具和方法说明所开发软件的问题定义和需求分析，比如NABCD模型，Microsoft Visio，StarUML等工具 (20%)；",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 40,
+      "kind": "list",
+      "text": "2. 原型系统设计、概要设计、详细设计：主要说明所开发软件的架构、数据结构及主要算法设计，比如墨刀等工具（35%）；",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 41,
+      "kind": "list",
+      "text": "3. 编码与测试：编码规范，运用码云等平台进行版本管理，设计测试计划和测试用例（30%）；",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 42,
+      "kind": "list",
+      "text": "4．功能创新：与众不同、特别吸引用户的创新（10%）；",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 43,
+      "kind": "list",
+      "text": "5. 用户反馈：包括用户的使用记录，照片，视频等（5%）。",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 120,
+      "kind": "heading",
+      "text": "1 问题定义",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 121,
+      "kind": "heading",
+      "text": "1.1 项目背景与意义",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 124,
+      "kind": "heading",
+      "text": "1.1.1 N（Need，需求）——解决用户的什么痛点",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 126,
+      "kind": "heading",
+      "text": "1.1.2 A（Approach，做法）、B（Benefit，好处）、C（Competitors，竞争）与 D（Delivery，推广）",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 131,
+      "kind": "heading",
+      "text": "1.2 项目基本目标",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 136,
+      "kind": "heading",
+      "text": "1.3 可行性分析",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 137,
+      "kind": "heading",
+      "text": "1.3.1 技术可行性",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 139,
+      "kind": "heading",
+      "text": "1.3.2 经济可行性",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 141,
+      "kind": "heading",
+      "text": "1.3.3 操作可行性",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 143,
+      "kind": "heading",
+      "text": "1.3.4 法律与合规可行性",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 145,
+      "kind": "heading",
+      "text": "1.4 人员管理和项目进度管理",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 147,
+      "kind": "caption",
+      "text": "表1-1 小组成员分工表",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 166,
+      "kind": "caption",
+      "text": "图1-1 项目进度计划甘特图",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 169,
+      "kind": "caption",
+      "text": "图1-2 系统总体功能模块结构图",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 170,
+      "kind": "heading",
+      "text": "2 需求分析",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 171,
+      "kind": "heading",
+      "text": "2.1 需求分析概述",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 173,
+      "kind": "caption",
+      "text": "表2-1 核心功能性需求表",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 212,
+      "kind": "heading",
+      "text": "2.2 UML 相关需求分析图",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 215,
+      "kind": "caption",
+      "text": "图2-1 系统核心用例图",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 218,
+      "kind": "caption",
+      "text": "图2-2 核心认证闭环流程图",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 219,
+      "kind": "heading",
+      "text": "2.3 原型系统设计",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 222,
+      "kind": "heading",
+      "text": "3 概要设计和详细设计",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 223,
+      "kind": "heading",
+      "text": "3.1 系统结构",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 226,
+      "kind": "caption",
+      "text": "图3-1 系统分层架构图",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 228,
+      "kind": "heading",
+      "text": "3.1.1 功能说明",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 230,
+      "kind": "heading",
+      "text": "3.1.2 接口设计",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 232,
+      "kind": "caption",
+      "text": "表3-1 核心接口设计表",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 274,
+      "kind": "heading",
+      "text": "3.2 类图等",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 277,
+      "kind": "caption",
+      "text": "图3-2 系统核心类图",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 278,
+      "kind": "heading",
+      "text": "3.3 关键数据结构设计",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 281,
+      "kind": "caption",
+      "text": "图3-3 核心数据 E-R 关系图",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 283,
+      "kind": "heading",
+      "text": "3.4 关键算法设计",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 286,
+      "kind": "caption",
+      "text": "图3-4 签退→时长认定→证书生成关键流程",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 288,
+      "kind": "heading",
+      "text": "3.5 数据管理说明",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 291,
+      "kind": "heading",
+      "text": "4 实现与测试",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 292,
+      "kind": "heading",
+      "text": "4.1 实现环境和代码管理",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 294,
+      "kind": "caption",
+      "text": "表4-1 系统实现环境",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 321,
+      "kind": "heading",
+      "text": "4.2 关键函数说明",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 328,
+      "kind": "heading",
+      "text": "4.3 测试计划和测试用例",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 330,
+      "kind": "caption",
+      "text": "表4-2 关键模块测试用例表",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 407,
+      "kind": "heading",
+      "text": "4.4 结果分析",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 410,
+      "kind": "heading",
+      "text": "5 总结",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 411,
+      "kind": "heading",
+      "text": "5.1 用户反馈",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 417,
+      "kind": "heading",
+      "text": "5.2 全文总结",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 419,
+      "kind": "list",
+      "text": "（1）在需求阶段，我们完成了背景与可行性调研，用 NABD 模型说明立项理由，基于 PRD v1.5 梳理了 36 条需求、四类角色与权限矩阵，并绘制了用例图与核心流程图。",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 420,
+      "kind": "list",
+      "text": "（2）在设计阶段，我们完成了模块化单体架构设计、七张核心表的数据库设计、核心类图与关键算法设计，并明确 MySQL/SQLite 双引擎的数据管理方案。",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 421,
+      "kind": "list",
+      "text": "（3）在实现阶段，我们完成了三端 26 屏高保真原型、Python 后端七大模块接口、JWT 鉴权与报名—签到—时长—证书核心链路，并通过 Gitee 进行版本管理。",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 422,
+      "kind": "list",
+      "text": "（4）在测试阶段，我们编写并执行了 14 个功能测试用例，全部通过，验证了核心闭环、幂等控制与权限校验的正确性。",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 423,
+      "kind": "list",
+      "text": "（5）在交付阶段，我们发布了应用、收集了 12 名用户的试用反馈，并完成本报告与答辩准备。",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 425,
+      "kind": "heading",
+      "text": "6 体会",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 437,
+      "kind": "appendix",
+      "text": "附录 A  后端关键代码",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 550,
+      "kind": "appendix",
+      "text": "附录 B  前端关键代码",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 577,
+      "kind": "reference_or_citation",
+      "text": "  let p = decodeURIComponent(req.url.split('?')[0]);",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 587,
+      "kind": "appendix",
+      "text": "附录 C  数据库关键代码",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    },
+    {
+      "part": "/word/document.xml",
+      "paragraph": 613,
+      "kind": "appendix",
+      "text": "附录 D  配置与运行说明",
+      "reason": "Typed number; use Word numbering or a dynamic field"
+    }
+  ],
+  "checked_paragraphs": 667,
+  "remediation": [
+    {
+      "kind": "list",
+      "affected_paragraphs": [
+        34,
+        35,
+        36,
+        39,
+        40,
+        41,
+        42,
+        43,
+        419,
+        420,
+        421,
+        422,
+        423
+      ],
+      "cause": "正文段落开头使用了手打序号（如“1、”、“(1)”、“一、”）。",
+      "fix": "使用 list.numbering.configure 转换为 Word 原生编号列表，或改用段内加粗引导词（如“首先，……；其次，……”）。"
+    },
+    {
+      "kind": "heading",
+      "affected_paragraphs": [
+        120,
+        121,
+        124,
+        126,
+        131,
+        136,
+        137,
+        139,
+        141,
+        143,
+        145,
+        170,
+        171,
+        212,
+        219,
+        222,
+        223,
+        228,
+        230,
+        274
+      ],
+      "cause": "章节标题中包含手打编号前缀（如“第1章”、“1.1”），或标题引用的 Word 编号定义缺失。",
+      "fix": "去掉标题文本中的手打编号前缀，改用原生多级编号（w:numPr），或在格式化操作中使用 heading.numbering.configure / heading.scheme.configure 自动转换。"
+    },
+    {
+      "kind": "caption",
+      "affected_paragraphs": [
+        147,
+        166,
+        169,
+        173,
+        215,
+        218,
+        226,
+        232,
+        277,
+        281,
+        286,
+        294,
+        330
+      ],
+      "cause": "图表题注使用了手打编号（如“表 1.1”、“图 2.1”），未使用 Word 动态域。",
+      "fix": "将题注编号替换为 STYLEREF 1 \\s 与 SEQ Table \\* ARABIC \\s 1（或 SEQ Figure）组合域，并用书签（如 Ref_Table_1_1）包裹编号部分，正文中通过 REF Ref_Table_1_1 \\h \\* CHARFORMAT 交叉引用，避免继承题注字号引发混排或 Word wdUndefined(9999999) 报错。"
+    },
+    {
+      "kind": "appendix",
+      "affected_paragraphs": [
+        437,
+        550,
+        587,
+        613
+      ],
+      "cause": "附录标题包含手打序号（如“附录A”）。",
+      "fix": "使用 Word 编号或题注/样式编号管理附录序号。"
+    },
+    {
+      "kind": "reference_or_citation",
+      "affected_paragraphs": [
+        577
+      ],
+      "cause": "正文或参考文献列表中存在手打数字文献标号（如“[1]”），未使用动态域与原生编号。",
+      "fix": "删除正文中的手打 [1] 文本，在请求中使用 citation.insert（支持通过 text_contains 或 paragraph_sha256 定位段落）自动生成 REF WFMRef_N \\n \\h 动态引用域与参考文献原生 [%1] 编号列表。"
+    }
+  ]
+}

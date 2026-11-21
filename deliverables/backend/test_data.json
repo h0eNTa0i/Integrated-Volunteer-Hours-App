@@ -1,0 +1,734 @@
+{
+  "student": {
+    "name": "张同学",
+    "studentId": "2023012345",
+    "college": "计算机学院",
+    "major": "软件工程 2023 级",
+    "phone": "138****5678",
+    "hours": {
+      "total": "86.5",
+      "activities": "12",
+      "certificates": "4",
+      "pending": "3",
+      "breakdown": [
+        {
+          "label": "已认定",
+          "hours": "62.5",
+          "count": "9",
+          "color": "#059669"
+        },
+        {
+          "label": "待认定",
+          "hours": "18",
+          "count": "3",
+          "color": "#F59E0B"
+        },
+        {
+          "label": "审核中",
+          "hours": "6",
+          "count": "1",
+          "color": "#9CA3AF"
+        }
+      ],
+      "detail": [
+        {
+          "title": "校园环保公益行 · 拾捡跑",
+          "date": "10月12日",
+          "hours": "4.0",
+          "status": "certified",
+          "initial": "环",
+          "gradient": "#3B82F6,#2DD4BF"
+        },
+        {
+          "title": "社区敬老院陪伴",
+          "date": "10月5日",
+          "hours": "3.0",
+          "status": "certified",
+          "initial": "敬",
+          "gradient": "#F59E0B,#F97316"
+        },
+        {
+          "title": "图书馆书籍整理",
+          "date": "进行中",
+          "hours": "2.5",
+          "status": "pending",
+          "initial": "图",
+          "gradient": "#8B5CF6,#6366F1"
+        }
+      ]
+    },
+    "certificate": {
+      "studentName": "张同学",
+      "activity": "校园环保公益行 · 拾捡跑",
+      "hours": "4.0",
+      "date": "2026 年 11 月 8 日",
+      "certNo": "QH-2026-0042",
+      "verifyCode": "8F3K-9Q2M",
+      "issuedAt": "2026年11月12日",
+      "signer": "青禾大学团委",
+      "cosigner": "阳光公益服务中心（联署）"
+    },
+    "myActivities": [
+      {
+        "activityId": "a1",
+        "title": "校园环保公益行 · 拾捡跑",
+        "position": "签到引导员",
+        "startDate": "2026-11-08T08:00",
+        "time": "11月8日 08:00",
+        "location": "东区田径场",
+        "status": "已报名",
+        "type": "blue",
+        "signedIn": false,
+        "initial": "环",
+        "gradient": "#3B82F6,#2DD4BF"
+      },
+      {
+        "activityId": "a3",
+        "title": "图书馆书籍整理志愿岗",
+        "position": "图书整理",
+        "startDate": "2026-11-04T18:30",
+        "time": "每周三 18:30",
+        "location": "逸夫图书馆",
+        "status": "进行中",
+        "type": "green",
+        "signedIn": false,
+        "initial": "图",
+        "gradient": "#8B5CF6,#6366F1"
+      },
+      {
+        "activityId": "a2",
+        "title": "社区敬老院陪伴",
+        "position": "陪伴志愿者",
+        "startDate": "2026-10-05T14:00",
+        "time": "10月5日",
+        "location": "晨晖敬老院",
+        "status": "进行中",
+        "type": "green",
+        "signedIn": true,
+        "initial": "敬",
+        "gradient": "#F59E0B,#F97316"
+      }
+    ]
+  },
+  "activityDetail": {
+    "title": "校园环保公益行 · 拾捡跑",
+    "org": "青禾大学环保协会",
+    "cosigner": "校外机构联署",
+    "time": "11月8日 08:00 - 12:00",
+    "location": "东区田径场",
+    "recruit": "30 人",
+    "deadline": "11月5日 23:59",
+    "description": "组织志愿者在校园及周边开展拾捡跑活动，清理垃圾并宣传环保理念。活动提供志愿时长认定，完成签到与签退即可累计 4 小时志愿时长。",
+    "positions": [
+      {
+        "name": "签到引导员",
+        "initial": "引",
+        "gradient": "#3B82F6,#60A5FA",
+        "need": 10,
+        "signed": 8,
+        "status": "可报",
+        "type": "blue"
+      },
+      {
+        "name": "物资搬运",
+        "initial": "物",
+        "gradient": "#10B981,#34D399",
+        "need": 8,
+        "signed": 8,
+        "status": "已满",
+        "type": "orange"
+      },
+      {
+        "name": "摄影记录",
+        "initial": "摄",
+        "gradient": "#8B5CF6,#A78BFA",
+        "need": 2,
+        "signed": 1,
+        "status": "可报",
+        "type": "blue"
+      }
+    ]
+  },
+  "checkin": {
+    "title": "校园环保公益行 · 拾捡跑",
+    "location": "东区田径场",
+    "time": "11月8日 08:00",
+    "signupRole": "签到引导员",
+    "signupTime": "10月28日 15:20",
+    "signupNo": "#2026-0842"
+  },
+  "publisher": {
+    "org": "青禾大学环保协会",
+    "type": "校内发布者",
+    "activities": [
+      {
+        "title": "校园环保公益行 · 拾捡跑",
+        "status": {
+          "label": "招募中"
+        },
+        "signed": 22,
+        "recruit": 30,
+        "date": "11月8日",
+        "hours": "4h",
+        "initial": "环",
+        "gradient": "#3B82F6,#2DD4BF"
+      },
+      {
+        "title": "社区敬老院陪伴志愿服务",
+        "status": {
+          "label": "待审核"
+        },
+        "signed": 0,
+        "recruit": 15,
+        "date": "11月15日",
+        "hours": "—",
+        "notice": "等待校方认可审核，审核通过后方可开始招募。",
+        "initial": "敬",
+        "gradient": "#F59E0B,#F97316"
+      },
+      {
+        "title": "图书馆书籍整理志愿岗",
+        "status": {
+          "label": "已结束"
+        },
+        "signed": 8,
+        "recruit": 8,
+        "date": "每周三",
+        "hours": "—",
+        "initial": "图",
+        "gradient": "#8B5CF6,#6366F1"
+      }
+    ],
+    "hours": {
+      "total": "128",
+      "published": "5",
+      "participants": "96",
+      "pending": "18",
+      "detail": [
+        {
+          "title": "校园环保公益行 · 拾捡跑",
+          "initial": "环",
+          "gradient": "#3B82F6,#2DD4BF",
+          "sub": "30 人参与 · 已结束",
+          "hours": "64h",
+          "status": "已认定",
+          "color": "#2563EB"
+        },
+        {
+          "title": "图书馆书籍整理志愿岗",
+          "initial": "图",
+          "gradient": "#8B5CF6,#6366F1",
+          "sub": "8 人参与 · 进行中",
+          "hours": "46h",
+          "status": "待认定",
+          "color": "#F59E0B"
+        },
+        {
+          "title": "社区敬老院陪伴志愿服务",
+          "initial": "敬",
+          "gradient": "#F59E0B,#F97316",
+          "sub": "15 人 · 待审核",
+          "hours": "—",
+          "status": "未开始",
+          "color": "#9CA3AF"
+        }
+      ]
+    },
+    "certificates": [
+      {
+        "name": "志愿服务证书模板 A",
+        "initial": "模",
+        "gradient": "#3B82F6,#60A5FA",
+        "sub": "含机构落款 · 已启用",
+        "status": {
+          "label": "启用中"
+        },
+        "action": "编辑证书模板"
+      },
+      {
+        "name": "机构公章（联署落款）",
+        "initial": "章",
+        "gradient": "#8B5CF6,#A78BFA",
+        "sub": "PNG · 已通过校方审核",
+        "status": {
+          "label": "已认证"
+        },
+        "action": "更换公章图片"
+      }
+    ]
+  },
+  "roster": {
+    "activity": "校园环保公益行 · 拾捡跑",
+    "stats": {
+      "signed": "22",
+      "waitlist": "6",
+      "withdrawn": "2",
+      "total": "30"
+    },
+    "students": [
+      {
+        "name": "张同学",
+        "id": "2023012345",
+        "position": "签到引导员",
+        "status": {
+          "label": "已确认"
+        },
+        "initial": "张",
+        "gradient": "#3B82F6,#60A5FA"
+      },
+      {
+        "name": "李同学",
+        "id": "2023016677",
+        "position": "物资搬运",
+        "status": {
+          "label": "已确认"
+        },
+        "initial": "李",
+        "gradient": "#10B981,#34D399"
+      },
+      {
+        "name": "王同学",
+        "id": "2023018890",
+        "position": "摄影记录",
+        "status": {
+          "label": "候补"
+        },
+        "initial": "王",
+        "gradient": "#8B5CF6,#A78BFA"
+      }
+    ]
+  },
+  "cancelActivity": {
+    "title": "校园环保公益行 · 拾捡跑",
+    "signed": "22"
+  },
+  "admin": {
+    "approval": {
+      "stats": {
+        "pending": "3",
+        "approvedMonth": "26"
+      },
+      "pending": [
+        {
+          "title": "社区敬老院陪伴志愿服务",
+          "org": "阳光公益服务中心",
+          "type": "校外",
+          "recruit": 15,
+          "initial": "阳",
+          "gradient": "#F59E0B,#F97316",
+          "status": {
+            "label": "待审核"
+          }
+        },
+        {
+          "title": "马拉松赛事志愿服务",
+          "org": "城市体育赛事公司",
+          "type": "校外",
+          "recruit": 50,
+          "initial": "马",
+          "gradient": "#EF4444,#F87171",
+          "status": {
+            "label": "待审核"
+          }
+        },
+        {
+          "title": "校园环保公益行 · 拾捡跑",
+          "org": "青禾大学环保协会",
+          "type": "校内",
+          "recruit": 30,
+          "initial": "环",
+          "gradient": "#3B82F6,#60A5FA",
+          "status": {
+            "label": "审核中"
+          }
+        }
+      ],
+      "approved": [
+        {
+          "title": "图书馆书籍整理志愿岗",
+          "org": "校图书馆",
+          "type": "校内",
+          "recruit": 8,
+          "initial": "图",
+          "gradient": "#8B5CF6,#6366F1",
+          "status": {
+            "label": "已认可"
+          }
+        }
+      ]
+    },
+    "approvalDetail": {
+      "title": "社区敬老院陪伴志愿服务",
+      "submittedAt": "2026-10-22 14:30",
+      "org": "阳光公益服务中心",
+      "orgType": "校外",
+      "target": "青禾大学在校学生",
+      "time": "11月15日 14:00-17:00",
+      "hours": "3.0 小时"
+    },
+    "dashboard": {
+      "stats": [
+        {
+          "label": "本月活动数",
+          "value": "38",
+          "color": "#3B82F6"
+        },
+        {
+          "label": "参与人次",
+          "value": "1,204",
+          "color": "#059669"
+        },
+        {
+          "label": "认证时长(h)",
+          "value": "4,862",
+          "color": "#8B5CF6"
+        },
+        {
+          "label": "活跃学生",
+          "value": "842",
+          "color": "#111827"
+        }
+      ],
+      "trend": [
+        {
+          "month": "6月",
+          "value": "520",
+          "height": 38,
+          "active": false
+        },
+        {
+          "month": "7月",
+          "value": "640",
+          "height": 47,
+          "active": false
+        },
+        {
+          "month": "8月",
+          "value": "715",
+          "height": 53,
+          "active": false
+        },
+        {
+          "month": "9月",
+          "value": "1,020",
+          "height": 75,
+          "active": false
+        },
+        {
+          "month": "10月",
+          "value": "1,340",
+          "height": 98,
+          "active": true
+        },
+        {
+          "month": "11月",
+          "value": "1,280",
+          "height": 94,
+          "active": true
+        }
+      ],
+      "distribution": [
+        {
+          "name": "环保公益",
+          "pct": 42,
+          "color": "#3B82F6"
+        },
+        {
+          "name": "社区服务",
+          "pct": 28,
+          "color": "#10B981"
+        },
+        {
+          "name": "支教助学",
+          "pct": 18,
+          "color": "#F59E0B"
+        },
+        {
+          "name": "赛事服务",
+          "pct": 12,
+          "color": "#8B5CF6"
+        }
+      ]
+    },
+    "certification": {
+      "stats": {
+        "activities": "2",
+        "students": "46",
+        "hours": "124h"
+      },
+      "activities": [
+        {
+          "title": "校园环保公益行 · 拾捡跑",
+          "initial": "环",
+          "gradient": "#3B82F6,#2DD4BF",
+          "sub": "30 人待认定 · 11月8日",
+          "status": {
+            "label": "待认定"
+          }
+        },
+        {
+          "title": "社区敬老院陪伴",
+          "initial": "敬",
+          "gradient": "#F59E0B,#F97316",
+          "sub": "16 人待认定 · 11月15日",
+          "status": {
+            "label": "待认定"
+          }
+        }
+      ],
+      "students": [
+        {
+          "name": "张同学",
+          "id": "2023012345",
+          "initial": "张",
+          "gradient": "#3B82F6,#60A5FA",
+          "checkin": "08:02",
+          "checkout": "12:05",
+          "hours": "4.0",
+          "status": {
+            "label": "待认定"
+          }
+        },
+        {
+          "name": "李同学",
+          "id": "2023016677",
+          "initial": "李",
+          "gradient": "#10B981,#34D399",
+          "checkin": "08:10",
+          "checkout": "11:58",
+          "hours": "3.8",
+          "status": {
+            "label": "待认定"
+          }
+        }
+      ]
+    },
+    "certDetail": {
+      "title": "校园环保公益行 · 拾捡跑",
+      "meta": "11月8日 · 30 人参与 · 待认定 122 小时",
+      "students": [
+        {
+          "name": "张同学",
+          "id": "2023012345",
+          "initial": "张",
+          "gradient": "#3B82F6,#60A5FA",
+          "checkin": "08:02",
+          "checkout": "12:05",
+          "hours": "4.0",
+          "status": {
+            "label": "待认定"
+          }
+        },
+        {
+          "name": "李同学",
+          "id": "2023016677",
+          "initial": "李",
+          "gradient": "#10B981,#34D399",
+          "checkin": "08:10",
+          "checkout": "11:58",
+          "hours": "3.8",
+          "status": {
+            "label": "待认定"
+          }
+        },
+        {
+          "name": "王同学",
+          "id": "2023018890",
+          "initial": "王",
+          "gradient": "#8B5CF6,#A78BFA",
+          "checkin": "08:15",
+          "checkout": "12:20",
+          "hours": "4.1",
+          "status": {
+            "label": "待认定"
+          }
+        },
+        {
+          "name": "赵同学",
+          "id": "2023019321",
+          "initial": "赵",
+          "gradient": "#F59E0B,#FBBF24",
+          "checkin": "08:05",
+          "checkout": "11:50",
+          "hours": "3.7",
+          "status": {
+            "label": "已认定"
+          }
+        }
+      ]
+    },
+    "certificates": [
+      {
+        "name": "青禾大学团委公章",
+        "initial": "章",
+        "gradient": "#8B5CF6,#6366F1",
+        "sub": "证书官方落款 · 默认",
+        "status": {
+          "label": "使用中"
+        },
+        "action": "修改公章"
+      },
+      {
+        "name": "标准志愿服务证书模板",
+        "initial": "模",
+        "gradient": "#3B82F6,#60A5FA",
+        "sub": "V2.0 · 含核验二维码",
+        "status": {
+          "label": "使用中"
+        },
+        "action": "修改证书模板"
+      }
+    ],
+    "cosigners": [
+      {
+        "name": "阳光公益服务中心",
+        "initial": "阳",
+        "gradient": "#F59E0B,#F97316",
+        "sub": "联署落款 · 待核验",
+        "status": {
+          "label": "待核验"
+        },
+        "action": "核验联署资质"
+      }
+    ],
+    "auditLogs": [
+      {
+        "actor": "环保协会",
+        "action": "编辑招募",
+        "time": "10:24",
+        "change": "「招募人数」30 → 35",
+        "note": "字段级变更 · 已通知 22 人",
+        "initial": "环",
+        "gradient": "#F59E0B,#F97316"
+      },
+      {
+        "actor": "校方",
+        "action": "认可通过",
+        "time": "昨日",
+        "change": "「图书馆书籍整理志愿岗」认可通过",
+        "note": "审核人：王老师",
+        "initial": "校",
+        "gradient": "#8B5CF6,#6366F1"
+      },
+      {
+        "actor": "环保协会",
+        "action": "取消活动",
+        "time": "10-18",
+        "change": "「旧衣回收行动」取消 · 原因：报名不足",
+        "note": "已通知 9 名报名用户",
+        "initial": "环",
+        "gradient": "#EF4444,#F87171"
+      }
+    ]
+  },
+  "activities": [
+    {
+      "id": "a1",
+      "title": "校园环保公益行 · 拾捡跑",
+      "org": "青禾大学环保协会",
+      "scope": "校内",
+      "category": "环保",
+      "date": "2026-11-08",
+      "hours": "4",
+      "recruit": 30,
+      "signed": 22,
+      "time": "11月8日 08:00",
+      "location": "东区田径场",
+      "gradient": "#3B82F6,#2DD4BF",
+      "badge": {
+        "label": "可加时长"
+      },
+      "full": false
+    },
+    {
+      "id": "a2",
+      "title": "社区敬老院陪伴志愿服务",
+      "org": "阳光公益服务中心",
+      "scope": "校外",
+      "category": "社区",
+      "date": "2026-11-15",
+      "hours": "3",
+      "recruit": 20,
+      "signed": 15,
+      "time": "11月15日 14:00",
+      "location": "晨晖敬老院",
+      "gradient": "#F59E0B,#F97316",
+      "badge": {
+        "label": "待审核"
+      },
+      "full": true
+    },
+    {
+      "id": "a3",
+      "title": "图书馆书籍整理志愿岗",
+      "org": "校图书馆",
+      "scope": "校内",
+      "category": "校园",
+      "date": "2026-11-04",
+      "hours": "2",
+      "recruit": 8,
+      "signed": 5,
+      "time": "每周三 18:30",
+      "location": "逸夫图书馆",
+      "gradient": "#8B5CF6,#6366F1",
+      "badge": {
+        "label": "可加时长"
+      },
+      "full": false
+    },
+    {
+      "id": "a4",
+      "title": "城市马拉松赛事志愿服务",
+      "org": "城市体育赛事公司",
+      "scope": "校外",
+      "category": "赛事",
+      "date": "2026-11-16",
+      "hours": "6",
+      "recruit": 50,
+      "signed": 38,
+      "time": "11月16日 06:30",
+      "location": "滨江体育公园",
+      "gradient": "#EF4444,#F87171",
+      "badge": {
+        "label": "可加时长"
+      },
+      "full": false
+    },
+    {
+      "id": "a5",
+      "title": "乡村小学暑期支教",
+      "org": "青禾大学支教团",
+      "scope": "校外",
+      "category": "支教",
+      "date": "2026-11-22",
+      "hours": "8",
+      "recruit": 20,
+      "signed": 20,
+      "time": "11月22日 08:00",
+      "location": "向阳乡中心小学",
+      "gradient": "#10B981,#34D399",
+      "badge": {
+        "label": "待审核"
+      },
+      "full": true
+    },
+    {
+      "id": "a6",
+      "title": "校园迎新志愿引导",
+      "org": "校学生会",
+      "scope": "校内",
+      "category": "校园",
+      "date": "2026-11-03",
+      "hours": "3",
+      "recruit": 25,
+      "signed": 10,
+      "time": "11月3日 09:00",
+      "location": "南门广场",
+      "gradient": "#6366F1,#8B5CF6",
+      "badge": {
+        "label": "可加时长"
+      },
+      "full": false
+    }
+  ]
+}

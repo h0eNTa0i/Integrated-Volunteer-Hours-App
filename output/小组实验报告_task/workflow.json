@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "kind": "word-report-workflow",
+  "status": "draft",
+  "template_id": null,
+  "topic": "志愿时长App（青禾志愿）",
+  "source": {
+    "path": "E:\\AI-Agent\\project\\volunteer\\《软件工程》项目报告撰写内容及规范化参考样本.docx",
+    "sha256": "b2e41f568439bf7bcd9c45d9f8b32671df13431e38377d4f8df4c7ad96ad4a14"
+  },
+  "draft": "E:\\AI-Agent\\project\\volunteer\\output\\小组实验报告_task\\draft.docx",
+  "profile": "E:\\AI-Agent\\project\\volunteer\\output\\小组实验报告_task\\profile.json",
+  "required_plan_options": [
+    "--match-structure"
+  ],
+  "structure_contract": {
+    "schema_version": "1.0",
+    "match": "exact",
+    "ordered_modules": [
+      {
+        "kind": "cover",
+        "variant": "",
+        "heading_text": "",
+        "anchor": "word/document.xml#block:2/p:1",
+        "outline_levels": [],
+        "separate_page": true,
+        "occurrence": 1
+      },
+      {
+        "kind": "chapters",
+        "variant": "",
+        "heading_text": "1 问题定义（黑体小2加粗居中）",
+        "anchor": "word/document.xml#block:95/p:1",
+        "outline_levels": [
+          1,
+          2,
+          2
+        ],
+        "occurrence": 1
+      },
+      {
+        "kind": "chapters",
+        "variant": "",
+        "heading_text": "2 需求分析",
+        "anchor": "word/document.xml#block:110/p:1",
+        "outline_levels": [
+          1,
+          2,
+          2,
+          2
+        ],
+        "occurrence": 2
+      },
+      {
+        "kind": "chapters",
+        "variant": "",
+        "heading_text": "3 概要设计和详细设计",
+        "anchor": "word/document.xml#block:134/p:1",
+        "outline_levels": [
+          1,
+          2,
+          2,
+          2,
+          2
+        ],
+        "occurrence": 3
+      },
+      {
+        "kind": "chapters",
+        "variant": "",
+        "heading_text": "4 实现与测试",
+        "anchor": "word/document.xml#block:152/p:1",
+        "outline_levels": [
+          1,
+          2,
+          2,
+          2
+        ],
+        "occurrence": 4
+      },
+      {
+        "kind": "chapters",
+        "variant": "",
+        "heading_text": "5 总结",
+        "anchor": "word/document.xml#block:165/p:1",
+        "outline_levels": [
+          1,
+          2,
+          2
+        ],
+        "occurrence": 5
+      },
+      {
+        "kind": "chapters",
+        "variant": "",
+        "heading_text": "6 体会(黑体小2号加粗居中)",
+        "anchor": "word/document.xml#block:179/p:1",
+        "outline_levels": [
+          1
+        ],
+        "occurrence": 6
+      }
+    ]
+  },
+  "instructions": "C:\\Users\\Sensei\\.workbuddy\\skills\\docx-format-master__skillhub\\references\\report-generation.md",
+  "source_notes": null,
+  "usage_notes": null,
+  "next_steps": [
+    "Read instructions and profile issues; replace draft placeholders with the requested report content.",
+    "Resolve evidence issues and map targets; preserve cloned cover tables, fields and complex objects explicitly.",
+    "Run check-structure, then run_format_pipeline.py with --profile, --match-structure and applicable --mapping/--resolutions.",
+    "Refresh fields, check citations/content, render all pages and bind the page review to final verify."
+  ]
+}

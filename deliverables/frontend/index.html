@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>青禾志愿 · 高保真原型（三端）</title>
+<style>
+:root{
+  --primary:#3B82F6; --primary-600:#2563EB; --primary-700:#1D4ED8;
+  --primary-50:#EFF6FF; --primary-100:#DBEAFE;
+  --success:#10B981; --success-50:#ECFDF5; --success-600:#059669;
+  --warning:#F59E0B; --warning-50:#FFFBEB;
+  --danger:#EF4444; --danger-50:#FEF2F2; --danger-600:#DC2626;
+  --purple:#8B5CF6; --purple-50:#F5F3FF;
+  --gray-50:#F9FAFB; --gray-100:#F3F4F6; --gray-200:#E5E7EB;
+  --gray-300:#D1D5DB; --gray-400:#9CA3AF; --gray-500:#6B7280;
+  --gray-700:#374151; --gray-900:#111827;
+  --bg:#EEF1F6; --card:#FFFFFF;
+  --radius:16px; --radius-sm:12px;
+  --shadow:0 1px 3px rgba(16,24,40,.06), 0 6px 20px rgba(16,24,40,.06);
+  --shadow-lg:0 12px 40px rgba(16,24,40,.16);
+}
+*{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+html,body{height:100%;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC","Helvetica Neue",sans-serif;
+  background:
+    radial-gradient(1200px 800px at 85% -10%, rgba(59,130,246,.14), transparent 55%),
+    radial-gradient(900px 700px at -10% 110%, rgba(139,92,246,.12), transparent 50%),
+    #0B1120;
+  color:var(--gray-900);
+  display:flex; align-items:center; justify-content:center;
+  min-height:100vh; overflow:hidden;
+}
+/* ---------- 桌面外层 ---------- */
+.app-shell{display:flex; gap:24px; align-items:stretch; height:100vh; padding:24px; max-width:1280px; margin:0 auto; width:100%;}
+/* 侧栏 */
+.sidebar{
+  width:280px; flex:none; background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08); border-radius:20px;
+  backdrop-filter:blur(10px); display:flex; flex-direction:column; overflow:hidden;
+}
+.sidebar-head{padding:20px 20px 14px;}
+.sidebar-head .logo{display:flex; align-items:center; gap:10px;}
+.sidebar-head .logo-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#3B82F6,#8B5CF6);display:grid;place-items:center;color:#fff;font-weight:800;font-size:17px;}
+.sidebar-head h1{font-size:16px;color:#fff;font-weight:700;letter-spacing:.5px;}
+.sidebar-head p{font-size:12px;color:#94A3B8;margin-top:3px;}
+.role-switch{display:flex;gap:6px;padding:0 20px 14px;}
+.role-switch button{
+  flex:1; padding:8px 0; border-radius:9px; border:1px solid rgba(255,255,255,.1);
+  background:transparent; color:#CBD5E1; font-size:12px; cursor:pointer; transition:.15s; font-family:inherit;
+}
+.role-switch button.active{background:#fff; color:#0B1120; font-weight:600;}
+.screen-list{flex:1; overflow-y:auto; padding:4px 12px 16px;}
+.screen-list::-webkit-scrollbar{width:6px;}
+.screen-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12); border-radius:3px;}
+.group-label{font-size:11px; color:#64748B; text-transform:uppercase; letter-spacing:1px; padding:14px 8px 6px; font-weight:700;}
+.screen-item{
+  display:flex; align-items:center; gap:10px; width:100%; text-align:left;
+  padding:9px 10px; margin:2px 0; border-radius:10px; border:none; background:transparent;
+  color:#CBD5E1; font-size:13px; cursor:pointer; transition:.12s; font-family:inherit;
+}
+.screen-item:hover{background:rgba(255,255,255,.06); color:#fff;}
+.screen-item.active{background:rgba(59,130,246,.18); color:#fff;}
+.screen-item .num{font-size:11px; color:#64748B; width:20px; font-variant-numeric:tabular-nums;}
+.screen-item.active .num{color:#93C5FD;}
+.screen-item .dot{width:6px;height:6px;border-radius:50%;flex:none;}
+
+/* 舞台 + 手机 */
+.stage{flex:1; display:flex; align-items:center; justify-content:center; min-width:0;}
+.phone{
+  width:390px; height:844px; flex:none; background:var(--bg);
+  border-radius:48px; box-shadow:var(--shadow-lg), 0 0 0 1px rgba(255,255,255,.08);
+  position:relative; overflow:hidden; display:flex; flex-direction:column;
+}
+.phone::before{content:""; position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  width:120px; height:28px; background:#0B1120; border-radius:0 0 16px 16px; z-index:60;}
+/* 状态栏 */
+.statusbar{
+  height:44px; flex:none; display:flex; align-items:center; justify-content:space-between;
+  padding:0 26px 0 30px; font-size:13px; font-weight:600; color:var(--gray-900); z-index:50;
+  padding-top:8px;
+}
+.statusbar .sb-right{display:flex; gap:5px; align-items:center;}
+.sb-right svg{width:16px;height:16px;}
+/* 顶栏 */
+.appbar{
+  height:52px; flex:none; display:flex; align-items:center; gap:10px; padding:0 16px;
+  position:relative; z-index:50;
+}
+.appbar .back{
+  width:34px;height:34px;border-radius:10px;background:var(--card);border:1px solid var(--gray-200);
+  display:grid;place-items:center;cursor:pointer;color:var(--gray-700); transition:.12s; flex:none;
+}
+.appbar .back:hover{background:var(--gray-100);}
+.appbar .back svg{width:19px;height:19px;}
+.appbar .title{font-size:17px; font-weight:700; flex:1;}
+.appbar .ap-action{display:flex; gap:8px;}
+.icon-btn{
+  width:34px;height:34px;border-radius:10px;background:var(--card);border:1px solid var(--gray-200);
+  display:grid;place-items:center;cursor:pointer;color:var(--gray-700); position:relative;
+}
+.icon-btn svg{width:19px;height:19px;}
+.icon-btn .badge{position:absolute; top:-3px; right:-3px; width:16px;height:16px;border-radius:50%;background:var(--danger);color:#fff;font-size:10px;display:grid;place-items:center;font-weight:700;}
+/* 内容区 */
+.screen-container{flex:1; overflow:hidden; position:relative;}
+.screen{
+  position:absolute; inset:0; overflow-y:auto; padding:0 16px 20px;
+  display:none; animation:fade .22s ease;
+}
+.screen.active{display:block;}
+.screen::-webkit-scrollbar{display:none;}
+@keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+/* 底栏 */
+.tabbar{
+  height:64px; flex:none; background:var(--card); border-top:1px solid var(--gray-200);
+  display:flex; align-items:center; padding:6px 8px; z-index:50;
+  padding-bottom:12px;
+}
+.tabbar .tab{flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; color:var(--gray-400); font-size:10px; cursor:pointer; background:none; border:none; font-family:inherit;}
+.tabbar .tab svg{width:22px;height:22px;}
+.tabbar .tab.active{color:var(--primary); font-weight:600;}
+.fab{
+  width:52px;height:52px;border-radius:18px;background:linear-gradient(135deg,var(--primary),var(--primary-600));
+  color:#fff; display:grid; place-items:center; cursor:pointer; box-shadow:0 10px 24px rgba(59,130,246,.4);
+  position:absolute; right:18px; bottom:80px; z-index:55; border:none;
+}
+.fab svg{width:26px;height:26px;}
+.fab:active{transform:scale(.95);}
+
+/* ---------- 通用组件 ---------- */
+.card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px; margin-bottom:12px;}
+.row{display:flex; align-items:center;}
+.grow{flex:1;}
+.mt8{margin-top:8px;} .mt12{margin-top:12px;} .mt16{margin-top:16px;}
+.muted{color:var(--gray-500); font-size:12px;}
+.small{font-size:12px;} .xs{font-size:11px;}
+.bold{font-weight:700;} .semibold{font-weight:600;}
+.section-title{font-size:15px; font-weight:700; margin:18px 2px 10px; display:flex; align-items:center; gap:8px;}
+.section-title .more{margin-left:auto; font-size:12px; color:var(--gray-400); font-weight:400; cursor:pointer;}
+/* 标签 */
+.tag{display:inline-flex; align-items:center; gap:4px; padding:3px 9px; border-radius:999px; font-size:11px; font-weight:600; line-height:1.5;}
+.tag.blue{background:var(--primary-50); color:var(--primary-600);}
+.tag.green{background:var(--success-50); color:var(--success-600);}
+.tag.orange{background:var(--warning-50); color:var(--warning);}
+.tag.red{background:var(--danger-50); color:var(--danger-600);}
+.tag.purple{background:var(--purple-50); color:var(--purple);}
+.tag.gray{background:var(--gray-100); color:var(--gray-500);}
+.dot-tag{display:inline-flex; align-items:center; gap:5px; font-size:12px;}
+.dot-tag::before{content:""; width:7px;height:7px;border-radius:50%; background:currentColor;}
+/* 按钮 */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:11px 16px; border-radius:12px; font-size:14px; font-weight:600; cursor:pointer; border:none; font-family:inherit; transition:.15s;}
+.btn svg{width:17px;height:17px;}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-600)); color:#fff; box-shadow:0 8px 18px rgba(59,130,246,.3);}
+.btn-primary:active{transform:scale(.98);}
+.btn-ghost{background:var(--card); color:var(--gray-700); border:1px solid var(--gray-200);}
+.btn-soft{background:var(--primary-50); color:var(--primary-600);}
+.btn-danger{background:var(--danger); color:#fff; box-shadow:0 8px 18px rgba(239,68,68,.3);}
+.btn-outline-danger{background:#fff; color:var(--danger-600); border:1px solid #FECACA;}
+.btn-link-danger{background:none; border:none; padding:6px 8px; color:var(--danger-600); font-size:14px; font-weight:600; cursor:pointer; font-family:inherit;}
+.btn-block{width:100%;}
+.btn-lg{padding:14px 16px; font-size:15px;}
+/* 认证页（登录 / 注册） */
+.auth-wrap{min-height:100%; display:flex; flex-direction:column; padding:30px 20px 24px;}
+.auth-brand{text-align:center; margin:10px 0 30px;}
+.auth-logo{width:66px;height:66px;border-radius:19px; background:linear-gradient(135deg,#3B82F6,#8B5CF6); color:#fff; font-size:30px; font-weight:800; display:grid; place-items:center; margin:0 auto 14px; box-shadow:0 10px 26px rgba(59,130,246,.35);}
+.auth-title{font-size:22px; font-weight:800; color:var(--gray-900); letter-spacing:.5px;}
+.auth-sub{font-size:13px; color:var(--gray-500); margin-top:6px;}
+.auth-card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px 18px 18px;}
+.auth-link{text-align:center; font-size:13px; color:var(--gray-500); margin-top:18px;}
+.auth-link a{color:var(--primary-600); font-weight:600; cursor:pointer;}
+.auth-foot{text-align:center; margin-top:auto; padding-top:22px;}
+.auth-foot button{background:none; border:none; color:var(--gray-400); font-size:12px; cursor:pointer; font-family:inherit; text-decoration:underline;}
+.auth-tip{margin-top:16px; padding:10px 12px; background:var(--primary-50); border-radius:10px; font-size:12px; color:var(--primary-700); line-height:1.7;}
+.pwd-wrap{position:relative;}
+.pwd-eye{position:absolute; right:8px; top:50%; transform:translateY(-50%); width:32px;height:32px; border:none; background:none; cursor:pointer; color:var(--gray-400); display:grid; place-items:center;}
+.pwd-eye svg{width:18px;height:18px;}
+.role-tabs{display:flex; gap:8px; margin-bottom:18px;}
+.role-tab{flex:1; padding:9px 0; border-radius:11px; border:1.5px solid var(--gray-200); background:#fff; color:var(--gray-500); font-size:13px; font-weight:600; cursor:pointer; transition:.15s; font-family:inherit;}
+.role-tab.active{border-color:var(--primary); background:var(--primary-50); color:var(--primary-600);}
+/* 输入 */
+.field{margin-bottom:14px;}
+.field label{display:block; font-size:13px; font-weight:600; color:var(--gray-700); margin-bottom:7px;}
+.field label .req{color:var(--danger); margin-left:2px;}
+.field label .hint{font-weight:400; color:var(--gray-400); font-size:11px;}
+.input{width:100%; padding:12px 14px; border:1px solid var(--gray-200); border-radius:12px; font-size:14px; font-family:inherit; background:var(--gray-50); color:var(--gray-900); transition:.15s;}
+.input:focus{outline:none; border-color:var(--primary); background:#fff; box-shadow:0 0 0 3px var(--primary-50);}
+textarea.input{resize:none; min-height:88px;}
+.select-wrap{position:relative;}
+.select-wrap select{appearance:none; -webkit-appearance:none; padding-right:36px;}
+.select-wrap::after{content:""; position:absolute; right:16px; top:50%; width:8px;height:8px; border-right:2px solid var(--gray-400); border-bottom:2px solid var(--gray-400); transform:translateY(-70%) rotate(45deg); pointer-events:none;}
+.chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+.chip{padding:7px 13px; border-radius:999px; border:1px solid var(--gray-200); background:#fff; font-size:13px; color:var(--gray-500); cursor:pointer; transition:.12s; font-family:inherit;}
+.chip.active{background:var(--primary); border-color:var(--primary); color:#fff; font-weight:600;}
+.chip.checked{background:var(--primary-50); border-color:var(--primary); color:var(--primary-600);}
+/* 进度条 */
+.progress{height:7px; border-radius:99px; background:var(--gray-100); overflow:hidden;}
+.progress i{display:block; height:100%; border-radius:99px; background:linear-gradient(90deg,var(--primary),#60A5FA); transition:.4s;}
+.progress.warn i{background:linear-gradient(90deg,var(--warning),#FBBF24);}
+.progress.full i{background:var(--success);}
+/* 头像 */
+.avatar{width:42px;height:42px;border-radius:13px; display:grid; place-items:center; font-weight:700; font-size:15px; color:#fff; flex:none;}
+/* 列表项 */
+.list-item{display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--gray-100);}
+.list-item:last-child{border-bottom:none;}
+/* 选择框 */
+.cb{width:22px;height:22px;border-radius:7px;border:2px solid var(--gray-300);display:grid;place-items:center;color:#fff;flex:none;cursor:pointer;transition:.15s;background:#fff;}
+.cb svg{width:13px;height:13px;opacity:0;}
+.cb.on{background:var(--primary);border-color:var(--primary);}
+.cb.on svg{opacity:1;}
+.cb-all{width:20px;height:20px;border-radius:6px;border:2px solid var(--gray-300);display:grid;place-items:center;color:#fff;flex:none;cursor:pointer;transition:.15s;background:#fff;}
+.cb-all svg{width:12px;height:12px;opacity:0;}
+.cb-all.on{background:var(--primary);border-color:var(--primary);}
+.cb-all.on svg{opacity:1;}
+/* 提示条 */
+.notice{display:flex; gap:10px; padding:12px; border-radius:12px; font-size:13px; line-height:1.5; margin-bottom:12px;}
+.notice svg{width:18px;height:18px; flex:none; margin-top:1px;}
+.notice.warn{background:var(--warning-50); color:#92400E;}
+.notice.danger{background:var(--danger-50); color:#991B1B;}
+.notice.info{background:var(--primary-50); color:var(--primary-700);}
+.notice.success{background:var(--success-50); color:var(--success-600);}
+/* 分隔 */
+.divider{height:1px; background:var(--gray-100); margin:12px 0;}
+/* 空态/统计 */
+.stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.stat-box{background:var(--card); border-radius:var(--radius-sm); padding:14px; box-shadow:var(--shadow);}
+.stat-box .v{font-size:22px; font-weight:800; letter-spacing:-.5px;}
+.stat-box .k{font-size:12px; color:var(--gray-500); margin-top:2px;}
+/* 弹窗 */
+.modal-mask{position:absolute; inset:0; background:rgba(15,23,42,.5); z-index:80; display:none; align-items:center; justify-content:center; padding:24px; backdrop-filter:blur(2px);}
+.modal-mask.show{display:flex;}
+.modal{background:#fff; border-radius:20px; width:100%; padding:22px; box-shadow:var(--shadow-lg); animation:pop .2s ease;}
+@keyframes pop{from{transform:scale(.92); opacity:0;} to{transform:scale(1); opacity:1;}}
+.modal h3{font-size:16px; font-weight:700; text-align:center;}
+.modal .modal-icon{width:52px;height:52px;border-radius:16px; display:grid; place-items:center; margin:0 auto 14px;}
+.modal .modal-icon svg{width:28px;height:28px;}
+.modal .modal-body{font-size:14px; color:var(--gray-500); text-align:center; line-height:1.6; margin:10px 0 20px;}
+.modal .modal-body strong{color:var(--gray-900);}
+.modal .modal-actions{display:flex; gap:10px;}
+.modal .modal-actions .btn{flex:1;}
+/* Toast */
+.toast{
+  position:absolute; left:50%; top:70px; transform:translateX(-50%); z-index:100;
+  background:var(--gray-900); color:#fff; padding:10px 18px; border-radius:99px; font-size:13px;
+  box-shadow:var(--shadow-lg); opacity:0; pointer-events:none; transition:.25s; white-space:nowrap;
+}
+.toast.show{opacity:1; top:82px;}
+.toast.success{background:var(--success-600);}
+.toast.danger{background:var(--danger);}
+/* 响应式 */
+@media (max-width:900px){
+  .sidebar{display:none;}
+  body{padding:0;}
+  .app-shell{padding:0; height:100dvh; gap:0;}
+  .stage{height:100%;}
+  .phone{width:100%; height:100%; border-radius:0; max-width:100%;}
+  .phone::before{display:none;}
+  .statusbar{height:36px; padding-top:6px;}
+}
+/* 筛选面板（底部抽屉） */
+.sheet-mask{position:absolute; inset:0; background:rgba(15,23,42,.5); z-index:85; display:none; align-items:flex-end; backdrop-filter:blur(2px);}
+.sheet-mask.show{display:flex;}
+.sheet{background:#fff; width:100%; border-radius:24px 24px 0 0; max-height:84%; display:flex; flex-direction:column; animation:slideUp .22s ease;}
+@keyframes slideUp{from{transform:translateY(100%);} to{transform:none;}}
+.sheet-head{display:flex; align-items:center; padding:18px 20px 12px; border-bottom:1px solid var(--gray-100);}
+.sheet-head .t{font-size:17px; font-weight:700; flex:1;}
+.sheet-head .reset{font-size:13px; color:var(--gray-400); background:none; border:none; cursor:pointer; padding:4px 8px;}
+.sheet-head .close{width:30px;height:30px;border-radius:9px;background:var(--gray-100);border:none;color:var(--gray-500);display:grid;place-items:center;cursor:pointer; flex:none;}
+.sheet-head .close svg{width:18px;height:18px;}
+.sheet-body{overflow-y:auto; padding:6px 20px 8px;}
+.f-group{padding:14px 0; border-bottom:1px solid var(--gray-100);}
+.f-group:last-child{border-bottom:none;}
+.f-label{font-size:14px; font-weight:700; color:var(--gray-700); margin-bottom:12px;}
+.sheet-foot{padding:12px 20px 20px; border-top:1px solid var(--gray-100);}
+/* 筛选标签 */
+.filter-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+.ftag{display:inline-flex; align-items:center; gap:5px; padding:5px 11px; border-radius:999px; background:var(--primary-50); color:var(--primary-600); font-size:12px; font-weight:600; cursor:pointer;}
+.ftag b{font-weight:800; font-size:15px; line-height:1;}
+/* 空态 */
+.empty-state{text-align:center; padding:48px 20px; color:var(--gray-400);}
+.empty-ico{width:64px;height:64px;border-radius:20px;background:var(--gray-100);display:grid;place-items:center;margin:0 auto 16px;color:var(--gray-300);}
+.empty-ico svg{width:28px;height:28px;}
+.ds-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:4px 10px;border-radius:8px;font-weight:600;line-height:1.4;margin-top:10px;}
+.ds-badge.ok{background:rgba(16,185,129,.16);color:#34D399;}
+.ds-badge.warn{background:rgba(245,158,11,.16);color:#FBBF24;}
+/* 岗位标签 */
+.pos-tag{display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:10px; background:var(--primary-50); color:var(--primary-600); font-size:13px; font-weight:600;}
+.pos-tag b{width:16px;height:16px;border-radius:50%; background:rgba(37,99,235,.15); display:grid; place-items:center; cursor:pointer; font-weight:800; line-height:1; font-size:13px;}
+/* 端切换（居中凸起按钮） */
+.switch-fab{
+  width:52px; height:52px; border-radius:50%;
+  background:linear-gradient(135deg,#3B82F6,#8B5CF6);
+  color:#fff; display:grid; place-items:center;
+  flex:none; cursor:pointer; border:4px solid var(--card);
+  margin-top:-22px;
+  box-shadow:0 8px 20px rgba(59,130,246,.45);
+  transition:.15s;
+}
+.switch-fab:active{transform:scale(.92);}
+.switch-fab svg{width:24px;height:24px;}
+.role-option{display:flex; align-items:center; gap:14px; padding:14px; border-radius:14px; cursor:pointer; margin-bottom:10px; border:1.5px solid var(--gray-200); background:#fff; transition:.15s;}
+.role-option.active{border-color:var(--primary); background:var(--primary-50);}
+.ro-icon{width:44px;height:44px;border-radius:13px; display:grid; place-items:center; color:#fff; font-weight:700; font-size:18px; background:linear-gradient(135deg,var(--c),rgba(0,0,0,.2)); flex:none;}
+.ro-info{flex:1;}
+.ro-name{font-size:15px; font-weight:700; color:var(--gray-900);}
+.ro-desc{font-size:12px; color:var(--gray-500); margin-top:3px;}
+.ro-check{width:20px;height:20px;color:var(--primary); flex:none; display:none;}
+.role-option.active .ro-check{display:block;}
+.role-logout{display:flex; align-items:center; justify-content:center; gap:7px; padding:13px; border-radius:14px; cursor:pointer; border:1.5px solid #FECACA; background:#FFF5F5; color:var(--danger-600); font-size:14px; font-weight:600; transition:.15s;}
+.role-logout svg{width:18px;height:18px;}
+.role-logout:active{transform:scale(.98);}
+
+/* ===== 按钮点击动效：涟漪 + 按压反馈 ===== */
+.btn, .chip, .role-tab, .tabbar .tab, .back, .fab{position:relative; overflow:hidden;}
+.icon-btn{position:relative;}
+.icon-btn, .tabbar .tab{transition:transform .15s;}
+.ripple{position:absolute; border-radius:50%; background:rgba(59,130,246,.18); transform:scale(0); animation:ripple .6s ease-out; pointer-events:none;}
+.ripple.light{background:rgba(255,255,255,.45);}
+@keyframes ripple{to{transform:scale(1); opacity:0;}}
+.btn:active, .chip:active, .role-tab:active, .back:active, .fab:active, .role-logout:active{transform:scale(.96);}
+.icon-btn:active, .tabbar .tab:active{transform:scale(.88);}
+
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-chevron-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-arrow-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM21 14v.01M14 21h.01M18 18h3v3h-3z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.5-5 6.5-5s5.7 1.5 6.5 5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 15c2.5.2 4.5 1.6 5 5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V6M4 20h16"/><path d="M9 20v-6M14 20v-9M19 20V8"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-2h6l2 2h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="14" r="3.5"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4"/><path d="M4 4c3-2 6 2 9 0s6 2 7 0v10c-1 2-4 0-7-2s-6 2-9 0"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="i-clock-fill" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5v5.6l3.2 1.9-1 1.7-4-2.4V7h1.8z"/></symbol>
+  <symbol id="i-signal" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17h2v4H3zM8 13h2v8H8zM13 9h2v12h-2zM18 4h2v17h-2z"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24" fill="currentColor"><path d="M12 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0-5.5c1.3 0 2.5.5 3.4 1.4l-1.4 1.4a3 3 0 0 0-4 0l-1.4-1.4a4.8 4.8 0 0 1 3.4-1.4zm0-4.5c2.3 0 4.4.9 6 2.4l-1.4 1.4A6.5 6.5 0 0 0 12 11c-1.7 0-3.3.7-4.6 1.8L6 11.4A8.5 8.5 0 0 1 12 9z"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8h15a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zm17 1.5h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-5z"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3-4 4 4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.5 10.5 0 0 1 12 19c-6.5 0-10-7-10-7a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.5 9.5 0 0 1 12 4c6.5 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19"/><path d="M9.9 9.9a3 3 0 1 0 4.24 4.24"/><path d="m1 1 22 22"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></symbol>
+</svg>
+
+<div class="app-shell">
+  <div class="stage">
+    <div class="phone">
+      <div class="statusbar">
+        <span id="sbTime">9:41</span>
+        <span class="sb-right">
+          <svg><use href="#i-signal"/></svg>
+          <svg><use href="#i-wifi"/></svg>
+          <svg><use href="#i-battery"/></svg>
+        </span>
+      </div>
+      <header class="appbar">
+        <button class="back" id="backBtn" onclick="goBack()" style="display:none"><svg><use href="#i-arrow-l"/></svg></button>
+        <span class="title" id="appTitle">志愿活动</span>
+        <span class="ap-action">
+          <button class="icon-btn" onclick="toast('暂无新通知')"><svg><use href="#i-bell"/></svg><span class="badge">3</span></button>
+          <button class="icon-btn" id="logoutBtn" onclick="logout()" title="退出登录"><svg><use href="#i-logout"/></svg></button>
+        </span>
+      </header>
+      <div class="screen-container" id="screenContainer"></div>
+      <nav class="tabbar" id="tabbar"></nav>
+      <button class="fab" id="fab" style="display:none" onclick="go('s8')"><svg><use href="#i-plus"/></svg></button>
+      <div class="modal-mask" id="modalMask" onclick="if(event.target===this)closeModal()"></div>
+      <div class="toast" id="toast"></div>
+      <div class="sheet-mask" id="filterMask" onclick="if(event.target===this)closeFilter()">
+        <div class="sheet">
+          <div class="sheet-head">
+            <span class="t">筛选</span>
+            <button class="reset" onclick="resetFilters()">重置</button>
+            <button class="close" onclick="closeFilter()"><svg><use href="#i-x"/></svg></button>
+          </div>
+          <div class="sheet-body">
+            <div class="f-group">
+              <div class="f-label">时间</div>
+              <div class="chip-row">
+                <span class="chip active" data-f="time" data-v="all" onclick="setFilter(this)">全部时间</span>
+                <span class="chip" data-f="time" data-v="thisWeek" onclick="setFilter(this)">本周</span>
+                <span class="chip" data-f="time" data-v="nextWeek" onclick="setFilter(this)">下周</span>
+                <span class="chip" data-f="time" data-v="thisMonth" onclick="setFilter(this)">本月</span>
+              </div>
+            </div>
+            <div class="f-group">
+              <div class="f-label">地点</div>
+              <div class="chip-row">
+                <span class="chip active" data-f="place" data-v="all" onclick="setFilter(this)">全部</span>
+                <span class="chip" data-f="place" data-v="inside" onclick="setFilter(this)">校内</span>
+                <span class="chip" data-f="place" data-v="outside" onclick="setFilter(this)">校外</span>
+              </div>
+            </div>
+            <div class="f-group">
+              <div class="f-label">类型</div>
+              <div class="chip-row">
+                <span class="chip active" data-f="category" data-v="all" onclick="setFilter(this)">全部</span>
+                <span class="chip" data-f="category" data-v="环保" onclick="setFilter(this)">环保</span>
+                <span class="chip" data-f="category" data-v="社区" onclick="setFilter(this)">社区</span>
+                <span class="chip" data-f="category" data-v="支教" onclick="setFilter(this)">支教</span>
+                <span class="chip" data-f="category" data-v="赛事" onclick="setFilter(this)">赛事</span>
+                <span class="chip" data-f="category" data-v="校园" onclick="setFilter(this)">校园</span>
+              </div>
+            </div>
+            <div class="f-group">
+              <div class="f-label">状态</div>
+              <div class="chip-row">
+                <span class="chip active" data-f="status" data-v="all" onclick="setFilter(this)">全部</span>
+                <span class="chip" data-f="status" data-v="available" onclick="setFilter(this)">可报名</span>
+                <span class="chip" data-f="status" data-v="full" onclick="setFilter(this)">已满员</span>
+              </div>
+            </div>
+          </div>
+          <div class="sheet-foot">
+            <button class="btn btn-primary btn-lg btn-block" id="filterResultBtn" onclick="closeFilter()">查看活动</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const ROLE = {
+  student:{name:'学生端', color:'#3B82F6', home:'s1', tabs:[
+    {id:'s1', icon:'i-home', label:'主页'},
+    {id:'s23', icon:'i-calendar', label:'活动'},
+    {id:'s5', icon:'i-clock', label:'时长'},
+    {id:'s6', icon:'i-award', label:'证书'}]},
+  publisher:{name:'发布者端', color:'#F59E0B', home:'s7', tabs:[
+    {id:'s7', icon:'i-grid', label:'工作台'},
+    {id:'s24', icon:'i-calendar', label:'活动'},
+    {id:'s19', icon:'i-clock', label:'时长'},
+    {id:'s20', icon:'i-award', label:'证书'}]},
+  admin:{name:'校方端', color:'#8B5CF6', home:'s12', tabs:[
+    {id:'s12', icon:'i-shield', label:'审核'},
+    {id:'s13', icon:'i-chart', label:'看板'},
+    {id:'s18', icon:'i-clock', label:'时长'},
+    {id:'s21', icon:'i-award', label:'证书'}]}
+};
+const META = {
+  s1:{title:'志愿活动', role:'student'},
+  s2:{title:'活动详情', role:'student', back:'s1'},
+  s3:{title:'报名确认', role:'student', back:'s2'},
+  s4:{title:'现场签到', role:'student', back:'s23'},
+  s17:{title:'现场签退', role:'student', back:'s23'},
+  s16:{title:'取消报名', role:'student', back:'s5'},
+  s5:{title:'我的时长', role:'student'},
+  s6:{title:'志愿证书', role:'student'},
+  s7:{title:'发布工作台', role:'publisher'},
+  s8:{title:'发布招募', role:'publisher', back:'s7'},
+  s9:{title:'编辑招募', role:'publisher', back:'s7'},
+  s10:{title:'报名名单', role:'publisher', back:'s7'},
+  s11:{title:'取消活动', role:'publisher', back:'s7'},
+  s12:{title:'认可审核', role:'admin'},
+  s15:{title:'审核详情', role:'admin', back:'s12'},
+  s13:{title:'数据看板', role:'admin'},
+  s18:{title:'时长认定', role:'admin'},
+  s14:{title:'审计日志', role:'admin'},
+  s19:{title:'时长累计', role:'publisher'},
+  s20:{title:'证书管理', role:'publisher'},
+  s21:{title:'证书管理', role:'admin'},
+  s22:{title:'认定详情', role:'admin', back:'s18'},
+  s23:{title:'我的活动', role:'student'},
+  s24:{title:'已发布活动', role:'publisher'},
+  s25:{title:'登录', role:'student', auth:true},
+  s26:{title:'注册', role:'student', auth:true, back:'s25'}
+};
+const NAV = [
+  {g:'学生端', c:'#3B82F6', items:[
+    ['s1','主页·活动列表'],['s23','我的活动'],['s2','活动详情'],['s3','报名确认'],['s4','现场签到'],
+    ['s17','现场签退'],['s16','取消报名'],['s5','我的时长'],['s6','证书导出']]},
+  {g:'发布者端', c:'#F59E0B', items:[
+    ['s7','发布工作台'],['s24','已发布活动'],['s8','发布招募'],['s9','编辑·二次确认'],['s10','报名名单'],['s11','取消活动'],
+    ['s19','时长累计'],['s20','证书管理']]},
+  {g:'校方管理端', c:'#8B5CF6', items:[
+    ['s12','认可审核'],['s15','审核详情'],['s13','数据看板'],['s18','时长认定'],['s22','认定详情'],
+    ['s21','证书管理'],['s14','审计日志']]}
+];
+let current = 's1';
+let currentRole = 'student';
+let history = [];
+let SCREENS = {};
+let DATA = {};
+let currentActivityId = null;   // 当前操作的活动 id（报名/签到/签退共用）
+let mySignups = [];             // 当前用户真实报名记录（含活动信息，来自后端）
+let myCheckinMap = {};          // activity_id -> {checkin, checkout}（真实签到状态）
+
+/* ================= 图标 & 通用助手 ================= */
+const ic = (id, cls='') => `<svg class="${cls}" width="18" height="18"><use href="#${id}"/></svg>`;
+const tag = (label, type) => `<span class="tag ${type}">${label}</span>`;
+const statusTag = s => s ? tag(s.label, s.type) : '';
+const avatar = (initial, gradient) => `<div class="avatar" style="background:linear-gradient(135deg,${gradient});">${initial}</div>`;
+
+function activityCard(a){
+  const badge = a.badge ? `<span class="tag" style="position:absolute; left:12px; top:12px; background:rgba(255,255,255,.92); color:var(--${a.badge.color});">${a.badge.label}</span>` : '';
+  const remain = a.recruit - a.signed;
+  const statusHtml = a.full ? `<span class="tag orange">已满员</span>` : `<span class="xs" style="color:var(--primary-600); font-weight:600;">${remain} 个名额</span>`;
+  const pct = Math.round(a.signed / a.recruit * 100);
+  return `
+<div class="card" style="padding:0; overflow:hidden; cursor:pointer;" onclick="openActivity('${a.id}')">
+  <div style="height:110px; background:linear-gradient(135deg,${a.gradient}); position:relative;">
+    ${badge}
+    <span class="tag" style="position:absolute; right:12px; top:12px; background:rgba(17,24,39,.35); color:#fff;">${a.scope}</span>
+  </div>
+  <div style="padding:14px;">
+    <div class="row"><span class="semibold" style="font-size:15px;">${a.title}</span></div>
+    <div class="muted mt8" style="display:flex; align-items:center; gap:4px;">${ic('i-users','')} ${a.org} · 招募 ${a.recruit} 人</div>
+    <div class="row mt8" style="gap:12px;">
+      <span class="dot-tag small" style="color:var(--gray-500)"><svg width="13" height="13" style="color:var(--gray-400)"><use href="#i-calendar"/></svg>${a.time}</span>
+      <span class="dot-tag small" style="color:var(--gray-500);"><svg width="13" height="13" style="color:var(--gray-400)"><use href="#i-pin"/></svg>${a.location}</span>
+    </div>
+    <div class="mt12">
+      <div class="row" style="justify-content:space-between; margin-bottom:6px;">
+        <span class="xs muted">已报名 ${a.signed} / ${a.recruit}</span>${statusHtml}
+      </div>
+      <div class="${a.full ? 'progress full' : 'progress'}"><i style="width:${pct}%"></i></div>
+    </div>
+  </div>
+</div>`;
+}
+
+/* ================= 活动筛选 ================= */
+const TIME_PRESETS = {
+  thisWeek: { label:'本周', start:'2026-11-02', end:'2026-11-08' },
+  nextWeek: { label:'下周', start:'2026-11-09', end:'2026-11-15' },
+  thisMonth: { label:'本月', start:'2026-11-01', end:'2026-11-30' }
+};
+const CATEGORY_LABELS = { '环保':'环保', '社区':'社区', '支教':'支教', '赛事':'赛事', '校园':'校园' };
+let filterState = { time:'all', place:'all', category:'all', status:'all' };
+let searchQuery = '';
+
+function openFilter(){
+  updateResultCount();
+  document.getElementById('filterMask').classList.add('show');
+}
+function closeFilter(){
+  document.getElementById('filterMask').classList.remove('show');
+}
+function setFilter(el){
+  const key = el.dataset.f;
+  const val = el.dataset.v;
+  filterState[key] = val;
+  const group = el.parentElement;
+  group.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  renderActivityList();
+  updateFilterBadge();
+  updateFilterTags();
+  updateResultCount();
+}
+function resetFilters(){
+  filterState = { time:'all', place:'all', category:'all', status:'all' };
+  const mask = document.getElementById('filterMask');
+  mask.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.v === 'all'));
+  const si = document.querySelector('#s1 input');
+  if (si) si.value = '';
+  searchQuery = '';
+  renderActivityList();
+  updateFilterBadge();
+  updateFilterTags();
+  updateResultCount();
+}
+function searchActivities(v){
+  searchQuery = (v || '').trim().toLowerCase();
+  renderActivityList();
+  updateResultCount();
+}
+function matchesTime(a){
+  if (filterState.time === 'all') return true;
+  const p = TIME_PRESETS[filterState.time];
+  if (!p || !a.date) return true;
+  return a.date >= p.start && a.date <= p.end;
+}
+function filterActivities(){
+  return DATA.activities.filter(a => {
+    if (searchQuery && !(a.title + a.org + a.location).toLowerCase().includes(searchQuery)) return false;
+    if (filterState.place === 'inside' && a.scope !== '校内') return false;
+    if (filterState.place === 'outside' && a.scope !== '校外') return false;
+    if (filterState.category !== 'all' && a.category !== filterState.category) return false;
+    if (filterState.status === 'available' && a.full) return false;
+    if (filterState.status === 'full' && !a.full) return false;
+    if (!matchesTime(a)) return false;
+    return true;
+  });
+}
+function renderActivityList(){
+  const box = document.getElementById('activityList');
+  const empty = document.getElementById('emptyState');
+  if (!box) return;
+  const list = filterActivities();
+  box.innerHTML = list.map(activityCard).join('');
+  if (empty) empty.style.display = list.length ? 'none' : 'block';
+}
+function activeFilterCount(){
+  let n = 0;
+  if (filterState.time !== 'all') n++;
+  if (filterState.place !== 'all') n++;
+  if (filterState.category !== 'all') n++;
+  if (filterState.status !== 'all') n++;
+  return n;
+}
+function updateFilterBadge(){
+  const b = document.getElementById('filterBadge');
+  if (!b) return;
+  const n = activeFilterCount();
+  b.textContent = n;
+  b.style.display = n > 0 ? '' : 'none';
+}
+function updateFilterTags(){
+  const box = document.getElementById('filterTags');
+  if (!box) return;
+  const tags = [];
+  if (filterState.time !== 'all') tags.push(['time', TIME_PRESETS[filterState.time] ? TIME_PRESETS[filterState.time].label : filterState.time]);
+  if (filterState.place !== 'all') tags.push(['place', filterState.place === 'inside' ? '校内' : '校外']);
+  if (filterState.category !== 'all') tags.push(['category', CATEGORY_LABELS[filterState.category] || filterState.category]);
+  if (filterState.status !== 'all') tags.push(['status', filterState.status === 'available' ? '可报名' : '已满员']);
+  box.innerHTML = tags.map(t => `<span class="ftag" onclick="clearFilter('${t[0]}')">${t[1]} <b>×</b></span>`).join('');
+  box.style.display = tags.length ? '' : 'none';
+}
+function clearFilter(key){
+  filterState[key] = 'all';
+  const chip = document.querySelector(`#filterMask .chip[data-f="${key}"][data-v="all"]`);
+  if (chip) {
+    chip.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+  }
+  renderActivityList();
+  updateFilterBadge();
+  updateFilterTags();
+  updateResultCount();
+}
+function updateResultCount(){
+  const btn = document.getElementById('filterResultBtn');
+  if (btn) btn.textContent = `查看 ${filterActivities().length} 个活动`;
+}
+
+function certStudentRow(s){
+  const st = s.status || {label:'待认定', type:'orange'};
+  return `
+  <div class="list-item student-item" data-name="${s.name}" data-id="${s.id}" data-checkin="${s.checkin}" data-checkout="${s.checkout}" data-hours="${s.hours}">
+    <span class="cb" onclick="toggleStudent(this)"><svg><use href="#i-check"/></svg></span>
+    ${avatar(s.initial, s.gradient)}
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${s.name} <span class="xs muted" style="font-weight:400;">${s.id}</span></div>
+      <div class="xs muted mt8">签到 ${s.checkin} · 签退 ${s.checkout} · <span style="color:var(--primary-600); font-weight:600;">实际 ${s.hours}h</span></div>
+    </div>
+    <span class="tag ${st.type} stu-status">${st.label}</span>
+  </div>`;
+}
+
+function certActionBar(){
+  return `
+<button class="btn btn-primary btn-lg btn-block mt16" onclick="batchCertAll(this)">${ic('i-check')} 批量认定（全部）</button>
+<div class="row" style="gap:8px; margin-top:10px;">
+  <button class="btn btn-soft btn-block cert-sel-btn" style="padding:11px 6px; font-size:13px;" onclick="certSelected(this)">${ic('i-check')} 认定所选（0）</button>
+  <button class="btn btn-ghost btn-block" style="padding:11px 6px; font-size:13px;" onclick="revokeSelected(this)">撤销认定</button>
+  <button class="btn btn-ghost btn-block" style="padding:11px 6px; font-size:13px;" onclick="exportSelected(this)">导出选中名单</button>
+</div>`;
+}
+
+/* ================= 屏幕模板（数据驱动） ================= */
+function buildScreens(D){
+  const S = {};
+
+  /* ---- s1 活动列表 ---- */
+  S.s1 = `
+<div class="row" style="gap:10px; padding-top:4px;">
+  <div style="flex:1; position:relative;">
+    <span style="position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--gray-400); display:flex;">${ic('i-search','')}</span>
+    <input class="input" style="padding-left:38px; background:#fff;" placeholder="搜索活动名称 / 组织 / 地点" oninput="searchActivities(this.value)">
+  </div>
+  <button class="icon-btn" style="width:42px;height:42px;" onclick="openFilter()">${ic('i-filter')}<span class="badge" id="filterBadge" style="display:none;"></span></button>
+</div>
+<div class="filter-tags" id="filterTags" style="display:none;"></div>
+<div id="activityList">${D.activities.map(activityCard).join('')}</div>
+<div class="empty-state" id="emptyState" style="display:none;">
+  <div class="empty-ico">${ic('i-search','')}</div>
+  <div style="font-size:15px; font-weight:600; color:var(--gray-500);">没有符合条件的活动</div>
+  <div class="muted mt8">试试调整关键词或筛选条件</div>
+  <button class="btn btn-soft mt16" onclick="resetFilters()">重置筛选</button>
+</div>`;
+
+  /* ---- s2 活动详情 ---- */
+  const ad = D.activityDetail;
+  S.s2 = `
+<div style="height:150px; margin:0 -16px; background:linear-gradient(135deg,#3B82F6,#2DD4BF); position:relative;">
+  <span class="tag" style="position:absolute; left:16px; bottom:14px; background:rgba(255,255,255,.92); color:var(--primary-600);">本校认可 · 可加时长</span>
+</div>
+<div class="card mt12">
+  <h2 id="detailTitle" style="font-size:18px; font-weight:800;">${ad.title}</h2>
+  <div id="detailOrg" class="muted mt8" style="display:flex; align-items:center; gap:6px;">${ic('i-users')} ${ad.org} · ${ad.cosigner}</div>
+  <div class="divider"></div>
+  <div class="list-item" style="padding:8px 0;"><span class="muted" style="width:80px;">活动时间</span><span id="detailTime" class="semibold">${ad.time}</span></div>
+  <div class="list-item" style="padding:8px 0;"><span class="muted" style="width:80px;">活动地点</span><span id="detailLocation" class="semibold">${ad.location}</span></div>
+  <div class="list-item" style="padding:8px 0;"><span class="muted" style="width:80px;">招募人数</span><span id="detailRecruit" class="semibold">${ad.recruit}</span></div>
+  <div class="list-item" style="padding:8px 0;"><span class="muted" style="width:80px;">报名截止</span><span class="semibold">${ad.deadline}</span></div>
+</div>
+<div class="section-title">招募岗位</div>
+<div class="card" style="padding:0;">
+${ad.positions.map(p => `
+  <div class="list-item" style="padding:14px 16px;">
+    ${avatar(p.initial, p.gradient)}
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${p.name}</div>
+      <div class="xs muted mt8">需求 ${p.need} · 已报 ${p.signed}</div>
+    </div>
+    ${tag(p.status, p.type)}
+  </div>`).join('')}
+</div>
+<div class="section-title">活动说明</div>
+<div class="card"><p style="font-size:13px; line-height:1.7; color:var(--gray-500);">${ad.description}</p></div>
+<div style="position:sticky; bottom:0; display:flex; gap:10px; padding:12px 0 4px; background:linear-gradient(transparent, var(--bg) 30%);">
+  <button class="btn btn-ghost" style="flex:none;" onclick="toast('已收藏活动')">${ic('i-star','')}</button>
+  <button id="detailSignupBtn" class="btn btn-primary btn-lg btn-block" onclick="go('s3')">立即报名</button>
+</div>`;
+
+  /* ---- s3 报名确认 ---- */
+  const stu = D.student;
+  S.s3 = `
+<div class="notice success">
+  <svg><use href="#i-shield"/></svg>
+  <div><strong>学籍认证已通过</strong><br><span class="xs">已通过「学号 + 学校」双重校验（R34），档案自动带出</span></div>
+</div>
+<div class="section-title">学籍档案 <span class="tag green" style="margin-left:auto;">自动带出</span></div>
+<div class="card">
+  <div class="row" style="gap:12px;">
+    <div class="avatar" style="background:linear-gradient(135deg,#3B82F6,#8B5CF6);">${stu.name.charAt(0)}</div>
+    <div>
+      <div class="semibold" style="font-size:15px;">${stu.name}</div>
+      <div class="xs muted mt8">${stu.college} · ${stu.major}</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="list-item" style="padding:8px 0;"><span class="muted" style="width:80px;">学号</span><span class="semibold">${stu.studentId}</span></div>
+  <div class="list-item" style="padding:8px 0;"><span class="muted" style="width:80px;">学校</span><span class="semibold">${D.school}</span></div>
+  <div class="list-item" style="padding:8px 0;"><span class="muted" style="width:80px;">手机号</span><span class="semibold">${stu.phone}</span></div>
+</div>
+<div class="field">
+  <label>选择岗位 <span class="req">*</span></label>
+  <div class="select-wrap">
+    <select class="input">
+      ${ad.positions.filter(p => p.type === 'blue').map(p => `<option>${p.name}（余 ${p.need - p.signed} 个名额）</option>`).join('')}
+    </select>
+  </div>
+</div>
+<div class="field"><label>报名说明 <span class="hint">选填</span></label><textarea class="input" placeholder="例如：有环保活动经验，可承担引导工作"></textarea></div>
+<div class="notice info">
+  <svg><use href="#i-alert"/></svg>
+  <div>报名成功后可在「我的时长」查看活动；活动当天需<strong>现场签到</strong>与<strong>签退</strong>，二者齐全方可累计时长。</div>
+</div>
+<button class="btn btn-primary btn-lg btn-block" onclick="openConfirm()">确认报名</button>`;
+
+  /* ---- s4 现场签到 ---- */
+  const ck = D.checkin;
+  S.s4 = `
+<div class="card" style="background:linear-gradient(135deg,var(--primary),var(--primary-600)); color:#fff;">
+  <div class="row" style="gap:10px;">
+    <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.2); display:grid;place-items:center;">${ic('i-pin','')}</div>
+    <div class="grow">
+      <div class="semibold">${ck.title}</div>
+      <div class="xs mt8" style="opacity:.8;">${ck.location} · ${ck.time}</div>
+    </div>
+    <span class="tag" style="background:rgba(255,255,255,.2); color:#fff;">签到中</span>
+  </div>
+</div>
+<div class="chip-row mt12" style="justify-content:center;">
+  <span class="chip active" onclick="switchSign(this,'sign-gps')">${ic('i-pin')} GPS 签到</span>
+  <span class="chip" onclick="switchSign(this,'sign-qr')">${ic('i-qr')} 扫码签到</span>
+</div>
+<div id="sign-gps">
+  <div class="card mt12" style="text-align:center;">
+    <div style="width:120px;height:120px;border-radius:50%; margin:6px auto 14px; background:var(--success-50); display:grid; place-items:center;">
+      <div style="width:70px;height:70px;border-radius:50%; background:var(--success); display:grid; place-items:center; color:#fff;">${ic('i-pin','')}</div>
+    </div>
+    <div class="semibold" style="font-size:16px; color:var(--success-600);">已进入活动范围</div>
+    <div class="muted mt8" style="font-size:12px;">电子围栏 200m 内 · 定位精度 12m</div>
+    <div class="divider"></div>
+    <div class="row" style="justify-content:center; gap:16px;">
+      <div><div class="xs muted">当前时间</div><div class="semibold">08:02:14</div></div>
+      <div style="width:1px;height:30px;background:var(--gray-100);"></div>
+      <div><div class="xs muted">签到状态</div><div class="semibold" style="color:var(--success-600);">待签到</div></div>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-lg btn-block" onclick="signedIn()">${ic('i-check')} 立即签到</button>
+</div>
+<div id="sign-qr" style="display:none;">
+  <div class="card mt12" style="text-align:center; padding:28px;">
+    <div style="width:190px;height:190px; margin:0 auto; border:2px dashed var(--gray-200); border-radius:20px; display:grid; place-items:center; color:var(--gray-300);">${ic('i-qr','')}</div>
+    <div class="muted mt16">对准活动现场二维码进行扫码签到</div>
+  </div>
+  <button class="btn btn-primary btn-lg btn-block" onclick="signedIn()">${ic('i-scan')} 打开扫码</button>
+</div>
+<div class="notice info mt12">
+  <svg><use href="#i-lock"/></svg>
+  <div>双通道防作弊：GPS 电子围栏校验位置，二维码校验活动现场，二者任一通过即可完成签到。</div>
+</div>
+<div style="text-align:center; margin-top:18px;">
+  <button class="btn-link-danger" onclick="openCancelSignup()">取消报名</button>
+</div>`;
+
+  /* ---- s17 现场签退 ---- */
+  S.s17 = `
+<div class="card" style="text-align:center; padding:24px;">
+  <div class="modal-icon" style="background:var(--success-50); color:var(--success-600); margin:0 auto 12px;">${ic('i-check-circle','')}</div>
+  <div class="semibold" style="font-size:16px;">已签到</div>
+  <div class="muted mt8">签到时间 08:02 · ${ck.location}</div>
+</div>
+<div class="card">
+  <div class="row" style="justify-content:space-between; margin-bottom:16px;"><span class="semibold">时长计算</span><span class="tag blue">实时</span></div>
+  <div class="row" style="gap:8px;">
+    <div style="flex:1; text-align:center;"><div class="muted xs">签到</div><div class="semibold" style="font-size:15px;">08:02</div></div>
+    <div style="flex:none; color:var(--primary);">${ic('i-chevron-r','')}</div>
+    <div style="flex:1; text-align:center;"><div class="muted xs">签退</div><div class="semibold" style="font-size:15px;">—</div></div>
+    <div style="flex:none; color:var(--primary);">${ic('i-chevron-r','')}</div>
+    <div style="flex:1; text-align:center;"><div class="muted xs">实际时长</div><div class="semibold" style="font-size:15px; color:var(--primary-600);">—</div></div>
+  </div>
+</div>
+<div class="chip-row mt12" style="justify-content:center;">
+  <span class="chip active" onclick="switchSign(this,'out-gps')">${ic('i-pin')} GPS 签退</span>
+  <span class="chip" onclick="switchSign(this,'out-qr')">${ic('i-qr')} 扫码签退</span>
+</div>
+<div id="out-gps">
+  <div class="card mt12" style="text-align:center;">
+    <div style="width:110px;height:110px;border-radius:50%; margin:6px auto 12px; background:var(--primary-50); display:grid; place-items:center; color:var(--primary);">${ic('i-pin','')}</div>
+    <div class="semibold" style="color:var(--primary-600);">仍在活动范围内</div>
+    <div class="muted mt8" style="font-size:12px;">电子围栏 200m 内 · 可正常签退</div>
+  </div>
+  <button class="btn btn-primary btn-lg btn-block" onclick="signedOut()">${ic('i-check')} 立即签退</button>
+</div>
+<div id="out-qr" style="display:none;">
+  <div class="card mt12" style="text-align:center; padding:24px;">
+    <div style="width:170px;height:170px; margin:0 auto; border:2px dashed var(--gray-200); border-radius:18px; display:grid; place-items:center; color:var(--gray-300);">${ic('i-qr','')}</div>
+    <div class="muted mt12">对准离场二维码扫码签退</div>
+  </div>
+  <button class="btn btn-primary btn-lg btn-block" onclick="signedOut()">${ic('i-scan')} 打开扫码</button>
+</div>
+<div style="text-align:center; margin-top:18px;">
+  <button class="btn-link-danger" onclick="openCancelSignup()">取消报名</button>
+</div>`;
+
+  /* ---- s16 取消报名 ---- */
+  S.s16 = `
+<div class="card">
+  <div class="row" style="gap:10px;">
+    <div style="width:46px;height:46px;border-radius:13px; background:linear-gradient(135deg,#3B82F6,#2DD4BF); flex:none;"></div>
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${ck.title}</div>
+      <div class="xs muted mt8">${ck.signupRole} · ${ck.time}</div>
+    </div>
+    <span class="tag blue">已报名</span>
+  </div>
+  <div class="divider"></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:80px;">报名时间</span><span>${ck.signupTime}</span></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:80px;">报名序号</span><span>${ck.signupNo}</span></div>
+</div>
+<div class="notice warn">
+  <svg><use href="#i-alert"/></svg>
+  <div>取消后你的名额将被<strong>释放</strong>；若岗位已满，后续报名者将进入<strong>候补队列</strong>。</div>
+</div>
+<div class="field">
+  <label>撤销说明 <span class="hint">选填，将反馈给组织者</span></label>
+  <div class="chip-row">
+    <span class="chip" onclick="chip(this)">时间冲突</span>
+    <span class="chip" onclick="chip(this)">临时有事</span>
+    <span class="chip" onclick="chip(this)">选错岗位</span>
+    <span class="chip" onclick="chip(this)">其他</span>
+  </div>
+</div>
+<button class="btn btn-outline-danger btn-lg btn-block" onclick="openCancelSignup()">取消报名</button>`;
+
+  /* ---- s5 我的时长 ---- */
+  const H = stu.hours;
+  S.s5 = `
+<div class="card" style="background:linear-gradient(135deg,#3B82F6,#8B5CF6); color:#fff; position:relative; overflow:hidden;">
+  <div class="xs" style="opacity:.85;">累计认证时长</div>
+  <div style="font-size:44px; font-weight:800; letter-spacing:-1px; margin:6px 0;">${H.total}<span style="font-size:20px; font-weight:600;"> 小时</span></div>
+  <div class="row" style="gap:20px;">
+    <div><span class="semibold" style="font-size:15px;">${H.activities}</span><span class="xs" style="opacity:.8; margin-left:4px;">参与活动</span></div>
+    <div><span class="semibold" style="font-size:15px;">${H.certificates}</span><span class="xs" style="opacity:.8; margin-left:4px;">张证书</span></div>
+    <div><span class="semibold" style="font-size:15px;">${H.pending}</span><span class="xs" style="opacity:.8; margin-left:4px;">待认定</span></div>
+  </div>
+  <div style="position:absolute; right:-30px; bottom:-30px; width:130px;height:130px; border-radius:50%; background:rgba(255,255,255,.08);"></div>
+</div>
+<div class="section-title">认定状态</div>
+<div class="card" style="padding:0;">
+${H.breakdown.map(b => `
+  <div class="list-item" style="padding:12px 16px;">
+    <span class="dot-tag semibold" style="color:${b.color};">${b.label}</span>
+    <span class="semibold grow" style="text-align:center;">${b.hours} 小时</span>
+    <span class="muted">${b.count} 项</span>
+  </div>`).join('')}
+</div>
+<div class="section-title">时长明细</div>
+<div class="card" style="padding:0;">
+${H.detail.map(d => `
+  <div class="list-item">
+    ${avatar(d.initial, d.gradient)}
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${d.title}</div>
+      <div class="xs muted mt8">${d.date} · ${d.hours} 小时</div>
+    </div>
+    ${d.status === 'certified' ? tag('已认定','green') : tag('待认定','orange')}
+  </div>`).join('')}
+</div>`;
+
+  /* ---- s6 证书 ---- */
+  const cert = stu.certificate;
+  S.s6 = `
+<div class="chip-row">
+  <span class="chip active" onclick="radioChip(this)">单次活动</span>
+  <span class="chip" onclick="radioChip(this)">累计时长</span>
+</div>
+<div class="card mt12" style="padding:0; overflow:hidden; text-align:center;">
+  <div style="padding:22px 20px 16px; background:linear-gradient(180deg,#F0F6FF, #fff);">
+    <div class="muted xs" style="letter-spacing:2px;">${D.school} · 志愿服务认证</div>
+    <h3 style="font-size:20px; font-weight:800; margin:10px 0 4px;">志愿服务证书</h3>
+    <div class="muted xs" style="letter-spacing:3px;">CERTIFICATE OF SERVICE</div>
+  </div>
+  <div style="padding:0 24px;">
+    <div style="border:2px solid var(--primary-100); border-radius:12px; padding:20px 16px;">
+      <div style="font-size:14px; color:var(--gray-500);">兹证明</div>
+      <div style="font-size:20px; font-weight:800; margin:8px 0;">${cert.studentName}</div>
+      <div style="font-size:13px; color:var(--gray-500); line-height:1.7;">于 ${cert.date} 参与<br>「${cert.activity}」志愿服务<br>累计服务 <strong style="color:var(--primary-600);">${cert.hours}</strong> 小时，特发此证。</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="row" style="padding:0 20px 16px;">
+    <div class="grow" style="text-align:left;">
+      <div class="xs muted">落款</div>
+      <div class="small semibold mt8">${cert.signer}</div>
+      <div class="xs muted mt8">${cert.cosigner}</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:64px;height:64px;background:#fff;border:1px solid var(--gray-100);border-radius:8px;display:grid;place-items:center;color:var(--gray-900);">${ic('i-qr','')}</div>
+      <div class="xs muted mt8">扫码核验</div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="row"><span class="semibold" style="font-size:14px;">证书信息</span></div>
+  <div class="divider"></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:90px;">证书编号</span><span class="semibold">${cert.certNo}</span></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:90px;">核验码</span><span class="semibold">${cert.verifyCode}</span></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:90px;">发放时间</span><span>${cert.issuedAt}</span></div>
+</div>
+<button class="btn btn-primary btn-lg btn-block" onclick="toast('正在生成 PDF 证书…')">${ic('i-download')} 导出 PDF 证书</button>`;
+
+  /* ---- s23 我的活动（学生已报名，真实数据动态渲染） ---- */
+  S.s23 = `
+<div class="section-title">已报名活动 <span class="muted" style="margin-left:auto;" id="myActivityCount">0 个</span></div>
+<div id="myActivityList"></div>`;
+
+  /* ---- s24 已发布活动（发布者） ---- */
+  S.s24 = `
+<div class="section-title">已发布活动 <span class="muted" style="margin-left:auto;">${D.publisher.activities.length} 个</span></div>
+${D.publisher.activities.map(a => `
+<div class="card" style="padding:0; overflow:hidden; cursor:pointer;" onclick="go('s10')">
+  <div style="height:72px; background:linear-gradient(135deg,${a.gradient}); position:relative;">
+    <span class="tag" style="position:absolute; right:12px; top:12px; background:rgba(17,24,39,.35); color:#fff;">${a.status.label}</span>
+  </div>
+  <div style="padding:14px;">
+    <div class="row"><span class="semibold" style="font-size:15px;">${a.title}</span></div>
+    <div class="row mt8" style="gap:12px;">
+      <span class="xs muted">已报名 ${a.signed} / ${a.recruit}</span>
+      <span class="xs muted">${a.date}</span>
+      ${a.hours !== '—' ? `<span class="xs muted">${a.hours}</span>` : ''}
+    </div>
+    <div class="mt12">
+      <div class="progress"><i style="width:${Math.round(a.signed / a.recruit * 100)}%"></i></div>
+    </div>
+  </div>
+</div>`).join('')}`;
+
+  /* ---- s7 发布工作台 ---- */
+  const pub = D.publisher;
+  S.s7 = `
+<div class="card" style="background:linear-gradient(135deg,#F59E0B,#F97316); color:#fff;">
+  <div class="row" style="gap:10px;">
+    <div class="avatar" style="background:rgba(255,255,255,.25);">${pub.org.charAt(0)}</div>
+    <div class="grow">
+      <div class="semibold">${pub.org}</div>
+      <div class="xs mt8" style="opacity:.85;">${pub.type}</div>
+    </div>
+    <span class="tag" style="background:rgba(255,255,255,.25); color:#fff;">已认证</span>
+  </div>
+</div>
+<div class="card" style="padding:0;">
+  <div class="row" style="gap:6px; padding:14px 16px 12px;">
+    <span class="chip active" data-all="1" style="font-size:12px;" onclick="filterChip(this)">全部</span>
+    <span class="chip" style="font-size:12px;" onclick="filterChip(this)">待审核</span>
+    <span class="chip" style="font-size:12px;" onclick="filterChip(this)">招募中</span>
+    <span class="chip" style="font-size:12px;" onclick="filterChip(this)">已满员</span>
+    <span class="chip" style="font-size:12px;" onclick="filterChip(this)">已结束</span>
+  </div>
+</div>
+${pub.activities.map((a, i) => `
+<div class="card">
+  <div class="row" style="justify-content:space-between;">
+    <span class="semibold" style="font-size:14px;">${a.title}</span>
+    ${statusTag(a.status)}
+  </div>
+  <div class="row mt8" style="gap:10px; font-size:12px; color:var(--gray-500);">
+    <span>${ic('i-users','')} ${a.signed}/${a.recruit}</span><span>${ic('i-calendar','')} ${a.date}</span>${a.hours !== '—' ? `<span>${ic('i-clock','')} ${a.hours}</span>` : ''}
+  </div>
+  ${a.notice ? `<div class="notice warn mt12" style="margin:12px 0 0; padding:10px;"><svg><use href="#i-shield"/></svg><div class="xs">${a.notice}</div></div>` : ''}
+  ${i === 0 ? `<div class="row mt12" style="gap:8px;">
+    <button class="btn btn-soft btn-block" style="padding:9px;" onclick="go('s10')">${ic('i-users')} 名单</button>
+    <button class="btn btn-ghost btn-block" style="padding:9px;" onclick="go('s9')">${ic('i-edit')} 编辑</button>
+    <button class="btn btn-outline-danger" style="padding:9px; flex:none;" onclick="go('s11')">${ic('i-trash')}</button>
+  </div>` : ''}
+</div>`).join('')}`;
+
+  /* ---- s8 发布表单 ---- */
+  S.s8 = `
+<div class="notice info">
+  <svg><use href="#i-alert"/></svg>
+  <div>提交后进入<strong>校方认可审核</strong>，审核通过后自动上线招募，并标记「可加时长」。</div>
+</div>
+<div class="field"><label>活动名称 <span class="req">*</span></label><input class="input" placeholder="请输入活动名称"></div>
+<div class="field"><label>活动类型 <span class="req">*</span></label>
+  <div class="select-wrap"><select class="input"><option>环保公益</option><option>社区服务</option><option>支教助学</option><option>赛事服务</option><option>其他</option></select></div>
+</div>
+<div class="field"><label>活动地点 <span class="req">*</span></label><input class="input" placeholder="请输入活动地点"></div>
+<div class="row" style="gap:10px;">
+  <div class="field" style="flex:1;"><label>开始时间 <span class="req">*</span></label><input class="input" type="text" value="2026-11-08 08:00"></div>
+  <div class="field" style="flex:1;"><label>结束时间 <span class="req">*</span></label><input class="input" type="text" value="2026-11-08 12:00"></div>
+</div>
+<div class="field"><label>报名截止时间 <span class="req">*</span></label><input class="input" type="text" value="2026-11-05 23:59"></div>
+<div class="row" style="gap:10px;">
+  <div class="field" style="flex:1;"><label>招募人数 <span class="req">*</span></label><input class="input" type="number" placeholder="30"></div>
+  <div class="field" style="flex:1;"><label>预计时长 <span class="req">*</span></label><input class="input" type="text" value="4.0 小时"></div>
+</div>
+<div class="field"><label>岗位设置 <span class="req">*</span></label>
+  <div class="chip-row" id="posList"></div>
+  <button class="btn btn-ghost btn-block mt8" style="border-style:dashed; color:var(--primary-600); border-color:var(--primary-100);" onclick="openPositionModal()">${ic('i-plus')} 添加岗位</button>
+</div>
+<div class="field"><label>活动简介 <span class="req">*</span></label><textarea class="input" placeholder="介绍活动内容、要求与注意事项"></textarea></div>
+<div class="field"><label>联系人 / 电话 <span class="req">*</span></label>
+  <div class="row" style="gap:10px;"><input class="input" placeholder="姓名"><input class="input" placeholder="联系电话"></div>
+</div>
+<button class="btn btn-primary btn-lg btn-block" onclick="openPublish()">提交审核</button>`;
+
+  /* ---- s9 编辑 ---- */
+  S.s9 = `
+<div class="notice warn">
+  <svg><use href="#i-alert"/></svg>
+  <div>已报名用户可见的内容变更，需<strong>二次确认</strong>并自动通知；所有修改将<strong>留痕</strong>记录。</div>
+</div>
+<div class="field"><label>活动名称 <span class="req">*</span><span class="hint"> 高风险字段</span></label><input class="input" value="${ad.title}" style="border-color:#FCD34D;"></div>
+<div class="row" style="gap:10px;">
+  <div class="field" style="flex:1;"><label>开始时间 <span class="req">*</span></label><input class="input" value="2026-11-08 08:00"></div>
+  <div class="field" style="flex:1;"><label>结束时间</label><input class="input" value="2026-11-08 12:00"></div>
+</div>
+<div class="field"><label>招募人数 <span class="req">*</span><span class="hint"> 高风险字段</span></label><input class="input" value="30" style="border-color:#FCD34D;"></div>
+<div class="field"><label>活动简介</label><textarea class="input">${ad.description}</textarea></div>
+<button class="btn btn-primary btn-lg btn-block" onclick="openEditConfirm()">保存修改</button>`;
+
+  /* ---- s10 报名名单 ---- */
+  const rs = D.roster;
+  S.s10 = `
+<div class="stat-grid">
+  <div class="stat-box"><div class="v" style="color:var(--primary);">${rs.stats.signed}</div><div class="k">已报名</div></div>
+  <div class="stat-box"><div class="v" style="color:var(--warning);">${rs.stats.waitlist}</div><div class="k">候补</div></div>
+  <div class="stat-box"><div class="v" style="color:var(--gray-400);">${rs.stats.withdrawn}</div><div class="k">已撤销</div></div>
+  <div class="stat-box"><div class="v">${rs.stats.total}</div><div class="k">名额总数</div></div>
+</div>
+<div class="section-title">报名名单 <span class="muted" style="margin-left:auto;">共 ${rs.stats.signed} 人</span></div>
+<div class="card" style="padding:0;">
+${rs.students.map(s => `
+  <div class="list-item">
+    ${avatar(s.initial, s.gradient)}
+    <div class="grow"><div class="semibold" style="font-size:14px;">${s.name}</div><div class="xs muted mt8">${s.id} · ${s.position}</div></div>
+    ${statusTag(s.status)}
+  </div>`).join('')}
+</div>
+<div class="row" style="gap:10px; margin-top:14px;">
+  <button class="btn btn-ghost btn-block">${ic('i-download')} 导出名单</button>
+</div>`;
+
+  /* ---- s11 取消活动 ---- */
+  const ca = D.cancelActivity;
+  S.s11 = `
+<div class="card" style="text-align:center; padding:24px;">
+  <div class="modal-icon" style="background:var(--danger-50); color:var(--danger); margin:0 auto 10px;">${ic('i-alert','')}</div>
+  <div class="semibold" style="font-size:15px;">${ca.title}</div>
+  <div class="muted mt8">已报名 ${ca.signed} 人 · 招募中</div>
+</div>
+<div class="notice danger">
+  <svg><use href="#i-alert"/></svg>
+  <div>取消活动将<strong>自动通知 ${ca.signed} 名已报名用户</strong>，操作<strong>不可撤销</strong>，并写入审计日志留痕。</div>
+</div>
+<div class="field">
+  <label>取消原因 <span class="req">*</span></label>
+  <div class="chip-row">
+    <span class="chip" onclick="chip(this)">天气原因</span>
+    <span class="chip" onclick="chip(this)">场地冲突</span>
+    <span class="chip" onclick="chip(this)">报名不足</span>
+    <span class="chip" onclick="chip(this)">其他原因</span>
+  </div>
+</div>
+<div class="field"><label>补充说明 <span class="hint">选填</span></label><textarea class="input" placeholder="向已报名用户说明情况"></textarea></div>
+<button class="btn btn-danger btn-lg btn-block" onclick="openCancelActivity()">确认取消活动</button>`;
+
+  /* ---- s12 认可审核 ---- */
+  const ap = D.admin.approval;
+  S.s12 = `
+<div class="stat-grid">
+  <div class="stat-box"><div class="v" style="color:var(--warning);">${ap.stats.pending}</div><div class="k">待审核</div></div>
+  <div class="stat-box"><div class="v" style="color:var(--success-600);">${ap.stats.approvedMonth}</div><div class="k">本月已认可</div></div>
+</div>
+<div class="section-title">待审核招募</div>
+<div class="card" style="padding:0;">
+${ap.pending.map(a => `
+  <div class="list-item" style="cursor:pointer;" onclick="go('s15')">
+    ${avatar(a.initial, a.gradient)}
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${a.title}</div>
+      <div class="xs muted mt8">${a.org} · ${a.type} · ${a.recruit}人</div>
+    </div>
+    ${statusTag(a.status)}
+  </div>`).join('')}
+</div>
+<div class="section-title">已认可（近期）</div>
+<div class="card" style="padding:0;">
+${ap.approved.map(a => `
+  <div class="list-item">
+    ${avatar(a.initial, a.gradient)}
+    <div class="grow"><div class="semibold" style="font-size:14px;">${a.title}</div><div class="xs muted mt8">${a.org} · ${a.type} · ${a.recruit}人</div></div>
+    ${statusTag(a.status)}
+  </div>`).join('')}
+</div>`;
+
+  /* ---- s15 审核详情 ---- */
+  const apd = D.admin.approvalDetail;
+  S.s15 = `
+<div class="card">
+  <div class="row" style="justify-content:space-between;">
+    <span class="semibold" style="font-size:16px;">${apd.title}</span>
+    <span class="tag orange">待审核</span>
+  </div>
+  <div class="muted mt8">提交于 ${apd.submittedAt}</div>
+  <div class="divider"></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:90px;">发布机构</span><span class="semibold">${apd.org}</span></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:90px;">机构类型</span><span class="tag orange">${apd.orgType}</span></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:90px;">招募对象</span><span class="semibold">${apd.target}</span></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:90px;">活动时间</span><span>${apd.time}</span></div>
+  <div class="list-item" style="padding:6px 0;"><span class="muted" style="width:90px;">预计时长</span><span>${apd.hours}</span></div>
+</div>
+<div class="section-title">机构资质</div>
+<div class="card">
+  <div class="list-item" style="padding:8px 0;"><span class="dot-tag semibold" style="color:var(--success-600);">营业执照已验证</span><span class="muted grow" style="text-align:right;">统一信用代码 91***</span></div>
+  <div class="list-item" style="padding:8px 0;"><span class="dot-tag semibold" style="color:var(--success-600);">志愿服务资质已核验</span></div>
+</div>
+<div class="section-title">审核意见</div>
+<div class="field"><textarea class="input" placeholder="填写审核意见（选填）"></textarea></div>
+<div class="row" style="gap:10px;">
+  <button class="btn btn-ghost btn-block btn-lg" onclick="rejectAudit()">驳回</button>
+  <button class="btn btn-primary btn-block btn-lg" onclick="approveAudit()">${ic('i-check')} 认可通过</button>
+</div>`;
+
+  /* ---- s13 数据看板 ---- */
+  const db = D.admin.dashboard;
+  S.s13 = `
+<div class="stat-grid">
+${db.stats.map(s => `<div class="stat-box"><div class="v" style="color:${s.color};">${s.value}</div><div class="k">${s.label}</div></div>`).join('')}
+</div>
+<div class="section-title">近 6 月认证时长趋势</div>
+<div class="card">
+  <div style="display:flex; align-items:flex-end; gap:10px; height:140px; padding:6px 4px 0;">
+${db.trend.map(t => `
+    <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; justify-content:flex-end; height:100%;">
+      <span class="xs muted">${t.value}</span><div style="width:100%; max-width:34px; height:${t.height}%; background:linear-gradient(180deg,${t.active ? '#8B5CF6,#A78BFA' : '#3B82F6,#60A5FA'}); border-radius:6px 6px 0 0;"></div><span class="xs muted">${t.month}</span>
+    </div>`).join('')}
+  </div>
+</div>
+<div class="section-title">活动分类分布</div>
+<div class="card">
+${db.distribution.map(d => `
+  <div class="list-item"><span class="semibold" style="font-size:13px;">${d.name}</span><div class="grow" style="margin:0 12px;"><div class="progress"><i style="width:${d.pct}%; background:linear-gradient(90deg,${d.color},${d.color});"></i></div></div><span class="muted">${d.pct}%</span></div>`).join('')}
+</div>
+<div class="section-title">审计日志 <span class="muted" style="margin-left:auto;">最近记录</span></div>
+<div class="card" style="padding:0;">
+${D.admin.auditLogs.map(l => `
+  <div class="list-item" style="align-items:flex-start;">
+    <div class="avatar" style="background:linear-gradient(135deg,${l.gradient}); width:36px;height:36px; border-radius:10px; font-size:13px;">${l.initial}</div>
+    <div class="grow">
+      <div class="row" style="justify-content:space-between;">
+        <span class="semibold" style="font-size:13px;">${l.actor} · ${l.action}</span>
+        <span class="xs muted">${l.time}</span>
+      </div>
+      <div class="xs mt8" style="color:var(--gray-500);">${l.change}</div>
+    </div>
+  </div>`).join('')}
+</div>`;
+
+  /* ---- s18 时长认定 ---- */
+  const certn = D.admin.certification;
+  S.s18 = `
+<div class="card" style="background:linear-gradient(135deg,#8B5CF6,#6366F1); color:#fff;">
+  <div class="row" style="justify-content:space-between;">
+    <div><div class="xs" style="opacity:.85;">待认定活动</div><div style="font-size:26px; font-weight:800;">${certn.stats.activities}</div></div>
+    <div><div class="xs" style="opacity:.85;">待认定学生</div><div style="font-size:26px; font-weight:800;">${certn.stats.students}</div></div>
+    <div><div class="xs" style="opacity:.85;">待认定时长</div><div style="font-size:26px; font-weight:800;">${certn.stats.hours}</div></div>
+  </div>
+</div>
+<div class="section-title">活动待认定汇总</div>
+<div class="card" style="padding:0;">
+${certn.activities.map(a => `
+  <div class="list-item" style="cursor:pointer;" onclick="go('s22')">
+    ${avatar(a.initial, a.gradient)}
+    <div class="grow"><div class="semibold" style="font-size:14px;">${a.title}</div><div class="xs muted mt8">${a.sub}</div></div>
+    ${statusTag(a.status)}
+    <svg width="16" height="16" style="color:var(--gray-300);"><use href="#i-chevron-r"/></svg>
+  </div>`).join('')}
+</div>
+<div class="section-title">学生认定列表
+  <span class="muted" style="margin-left:auto; display:flex; align-items:center; gap:7px; font-weight:400;">
+    <span class="cb-all" onclick="toggleSelectAll(this)"><svg><use href="#i-check"/></svg></span>
+    全选 · 已选 <span class="sel-count" style="color:var(--primary-600); font-weight:700;">0</span> 人
+  </span>
+</div>
+<div class="card" style="padding:0;">
+${certn.students.map(certStudentRow).join('')}
+</div>
+${certActionBar()}`;
+
+  /* ---- s22 认定详情 ---- */
+  const cdet = D.admin.certDetail;
+  S.s22 = `
+<div class="card">
+  <div class="row" style="justify-content:space-between;">
+    <span class="semibold" style="font-size:16px;">${cdet.title}</span>
+    <span class="tag orange">待认定</span>
+  </div>
+  <div class="muted mt8" style="font-size:12px;">${cdet.meta}</div>
+</div>
+<div class="section-title">学生认定列表
+  <span class="muted" style="margin-left:auto; display:flex; align-items:center; gap:7px; font-weight:400;">
+    <span class="cb-all" onclick="toggleSelectAll(this)"><svg><use href="#i-check"/></svg></span>
+    全选 · 已选 <span class="sel-count" style="color:var(--primary-600); font-weight:700;">0</span> 人
+  </span>
+</div>
+<div class="card" style="padding:0;">
+${cdet.students.map(certStudentRow).join('')}
+</div>
+${certActionBar()}`;
+
+  /* ---- s14 审计日志 ---- */
+  S.s14 = `
+<div class="card">
+  <div class="row" style="gap:8px;">
+    <div class="select-wrap" style="flex:1;"><select class="input" style="padding:10px 12px;"><option>全部操作</option><option>发布/编辑</option><option>认可审核</option><option>时长认定</option></select></div>
+    <div class="select-wrap" style="flex:1;"><select class="input" style="padding:10px 12px;"><option>近 7 天</option><option>近 30 天</option><option>全部时间</option></select></div>
+  </div>
+</div>
+<div class="card" style="padding:0;">
+${D.admin.auditLogs.map(l => `
+  <div class="list-item" style="align-items:flex-start;">
+    <div class="avatar" style="background:linear-gradient(135deg,${l.gradient}); width:36px;height:36px; border-radius:10px; font-size:13px;">${l.initial}</div>
+    <div class="grow">
+      <div class="row" style="justify-content:space-between;">
+        <span class="semibold" style="font-size:13px;">${l.actor} · ${l.action}</span>
+        <span class="xs muted">${l.time}</span>
+      </div>
+      <div class="xs mt8" style="color:var(--gray-500);">${l.change}</div>
+      <div class="xs mt8" style="color:var(--gray-400);">${l.note}</div>
+    </div>
+  </div>`).join('')}
+</div>
+<div class="notice info">
+  <svg><use href="#i-lock"/></svg>
+  <div>审计日志<strong>只追加、不更新、不删除</strong>，完整记录字段级变更链，供合规追溯。</div>
+</div>`;
+
+  /* ---- s19 时长累计 ---- */
+  const ph = pub.hours;
+  S.s19 = `
+<div class="card" style="background:linear-gradient(135deg,#F59E0B,#F97316); color:#fff; position:relative; overflow:hidden;">
+  <div class="xs" style="opacity:.85;">已发布活动累计认证时长</div>
+  <div style="font-size:40px; font-weight:800; letter-spacing:-1px; margin:6px 0;">${ph.total}<span style="font-size:19px; font-weight:600;"> 小时</span></div>
+  <div class="row" style="gap:20px;">
+    <div><span class="semibold" style="font-size:15px;">${ph.published}</span><span class="xs" style="opacity:.8; margin-left:4px;">已发布活动</span></div>
+    <div><span class="semibold" style="font-size:15px;">${ph.participants}</span><span class="xs" style="opacity:.8; margin-left:4px;">参与人次</span></div>
+    <div><span class="semibold" style="font-size:15px;">${ph.pending}</span><span class="xs" style="opacity:.8; margin-left:4px;">待认定</span></div>
+  </div>
+  <div style="position:absolute; right:-30px; bottom:-30px; width:130px;height:130px; border-radius:50%; background:rgba(255,255,255,.08);"></div>
+</div>
+<div class="notice info">
+  <svg><use href="#i-shield"/></svg>
+  <div>活动时长经<strong>校方统一认定</strong>后计入累计；此处汇总你已发布活动的认定情况。</div>
+</div>
+<div class="section-title">已发布活动时长明细</div>
+<div class="card" style="padding:0;">
+${ph.detail.map(d => `
+  <div class="list-item">
+    ${avatar(d.initial, d.gradient)}
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${d.title}</div>
+      <div class="xs muted mt8">${d.sub}</div>
+    </div>
+    <div style="text-align:right;"><div class="semibold" style="color:${d.color};">${d.hours}</div><div class="xs muted mt8">${d.status}</div></div>
+  </div>`).join('')}
+</div>`;
+
+  /* ---- s20 证书管理（发布者） ---- */
+  S.s20 = `
+<div class="notice info">
+  <svg><use href="#i-award"/></svg>
+  <div>上传机构证书模板与联署落款，学生导出证书时自动套用。</div>
+</div>
+<button class="btn btn-primary btn-lg btn-block" onclick="toast('选择证书模板文件…')">${ic('i-plus')} 上传证书模板</button>
+<div class="section-title">证书模板与落款</div>
+<div class="card" style="padding:0;">
+${pub.certificates.map(c => `
+  <div class="list-item">
+    ${avatar(c.initial, c.gradient)}
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${c.name}</div>
+      <div class="xs muted mt8">${c.sub}</div>
+    </div>
+    ${statusTag(c.status)}
+    <button class="icon-btn" onclick="toast('${c.action}')">${ic('i-edit')}</button>
+  </div>`).join('')}
+</div>`;
+
+  /* ---- s21 证书管理（校方） ---- */
+  S.s21 = `
+<div class="notice info">
+  <svg><use href="#i-award"/></svg>
+  <div>校方维护证书<strong>官方落款与公章</strong>，并为校外机构证书进行联署。</div>
+</div>
+<button class="btn btn-primary btn-lg btn-block" onclick="toast('选择公章/落款文件…')">${ic('i-plus')} 上传公章 / 落款</button>
+<div class="section-title">官方落款与公章</div>
+<div class="card" style="padding:0;">
+${D.admin.certificates.map(c => `
+  <div class="list-item">
+    ${avatar(c.initial, c.gradient)}
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${c.name}</div>
+      <div class="xs muted mt8">${c.sub}</div>
+    </div>
+    ${statusTag(c.status)}
+    <button class="icon-btn" onclick="toast('${c.action}')">${ic('i-edit')}</button>
+  </div>`).join('')}
+</div>
+<div class="section-title">校外机构联署管理</div>
+<div class="card" style="padding:0;">
+${D.admin.cosigners.map(c => `
+  <div class="list-item">
+    ${avatar(c.initial, c.gradient)}
+    <div class="grow">
+      <div class="semibold" style="font-size:14px;">${c.name}</div>
+      <div class="xs muted mt8">${c.sub}</div>
+    </div>
+    ${statusTag(c.status)}
+    <button class="icon-btn" onclick="toast('${c.action}')">${ic('i-shield')}</button>
+  </div>`).join('')}
+</div>`;
+
+  /* ---- s25 登录 ---- */
+  S.s25 = `
+<div class="auth-wrap">
+  <div class="auth-brand">
+    <div class="auth-logo">青</div>
+    <div class="auth-title">青禾志愿</div>
+    <div class="auth-sub">志愿时长认证服务平台</div>
+  </div>
+  <div class="auth-card">
+    <div class="role-tabs">
+      <button class="role-tab active" data-role-key="student" onclick="setAuthRole('student')">学生端</button>
+      <button class="role-tab" data-role-key="publisher" onclick="setAuthRole('publisher')">发布者端</button>
+      <button class="role-tab" data-role-key="admin" onclick="setAuthRole('admin')">校方端</button>
+    </div>
+    <div class="field">
+      <label id="loginAccountLabel">手机号 / 学号</label>
+      <input class="input" id="loginAccount" type="text" placeholder="请输入手机号或学号">
+    </div>
+    <div class="field">
+      <label>密码</label>
+      <div class="pwd-wrap">
+        <input class="input" id="loginPwd" type="password" placeholder="请输入密码">
+        <button class="pwd-eye" onclick="togglePwd('loginPwd', this)">${ic('i-eye')}</button>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-lg btn-block mt8" onclick="doLogin()">登录</button>
+    <div class="auth-link">还没有账号？<a onclick="go('s26')">立即注册</a></div>
+  </div>
+  <div class="auth-foot">
+    <button onclick="guestBrowse()">先逛逛，游客浏览</button>
+  </div>
+</div>`;
+
+  /* ---- s26 注册 ---- */
+  S.s26 = `
+<div class="auth-wrap">
+  <div class="auth-brand">
+    <div class="auth-logo">青</div>
+    <div class="auth-title">注册账号</div>
+    <div class="auth-sub">加入青禾志愿，让每一份善意被看见</div>
+  </div>
+  <div class="auth-card">
+    <div class="role-tabs">
+      <button class="role-tab active" data-role-key="student" onclick="setAuthRole('student')">学生端</button>
+      <button class="role-tab" data-role-key="publisher" onclick="setAuthRole('publisher')">发布者端</button>
+      <button class="role-tab" data-role-key="admin" onclick="setAuthRole('admin')">校方端</button>
+    </div>
+    <div id="regFields"></div>
+    <button class="btn btn-primary btn-lg btn-block mt8" onclick="doRegister()">注册并登录</button>
+    <div class="auth-link">已有账号？<a onclick="go('s25')">去登录</a></div>
+  </div>
+</div>`;
+
+  return S;
+}
+
+/* ================= 数据加载（data.json 优先，内置兜底） ================= */
+function stripJsonComments(str){
+  let out = '';
+  let inString = false, inLine = false, inBlock = false;
+  for (let i = 0; i < str.length; i++) {
+    const c = str[i], n = str[i + 1];
+    if (inLine) { if (c === '\n') { inLine = false; out += c; } continue; }
+    if (inBlock) { if (c === '*' && n === '/') { inBlock = false; i++; } continue; }
+    if (inString) { out += c; if (c === '\\') { out += n; i++; } else if (c === '"') { inString = false; } continue; }
+    if (c === '"') { inString = true; out += c; }
+    else if (c === '/' && n === '/') { inLine = true; i++; }
+    else if (c === '/' && n === '*') { inBlock = true; i++; }
+    else { out += c; }
+  }
+  return out;
+}
+
+async function loadData(){
+  // 1) 读取静态配置 data.json（前端常量：学校、状态色映射、badge 色映射）
+  let config = {};
+  try {
+    const r = await fetch('data.json', {cache:'no-store'});
+    if(r.ok) config = JSON.parse(stripJsonComments(await r.text()));
+  } catch(e) { /* 静态配置读取失败则使用默认 */ }
+  // 2) 读取动态数据（后端 API 返回）
+  let data = null;
+  try {
+    const resp = await fetch('/api/v1/test-data', {cache:'no-store'});
+    if(resp.ok){
+      const body = await resp.json();
+      data = (body && body.data) || null;
+    }
+  } catch(e) { data = null; }
+  if(!data){ window.__dataSource = 'error'; return null; }
+  // 3) 合并：把静态配置的字段/映射应用回动态数据
+  if(config.school) data.school = config.school;
+  applyStaticConfig(data, config);
+  window.__dataSource = 'test_data';
+  return data;
+}
+
+// 递归为动态数据填充「前端常量映射」：status.type、badge.color
+function applyStaticConfig(node, config){
+  if(Array.isArray(node)){ node.forEach(n => applyStaticConfig(n, config)); return; }
+  if(node && typeof node === 'object'){
+    if(node.status && node.status.label){
+      node.status.type = (config.statusType && config.statusType[node.status.label]) || 'gray';
+    }
+    if(node.badge && node.badge.label){
+      node.badge.color = (config.badgeColor && config.badgeColor[node.badge.label]) || 'primary-600';
+    }
+    Object.keys(node).forEach(k => applyStaticConfig(node[k], config));
+  }
+}
+
+function markDataSource(){
+  const ds = document.getElementById('dataSourceBadge');
+  if(!ds) return;
+  if (window.__dataSource === 'test_data') {
+    ds.className = 'ds-badge ok';
+    ds.textContent = '✓ 动态：后端 API · 静态：data.json';
+  } else {
+    ds.className = 'ds-badge warn';
+    ds.textContent = '⚠ 未读取到测试数据';
+  }
+}
+
+/* ================= 渲染 ================= */
+const container = document.getElementById('screenContainer');
+function renderScreens(){
+  container.innerHTML = '';
+  Object.keys(META).forEach(id => {
+    const html = SCREENS[id];
+    if(!html) return;
+    const sec = document.createElement('section');
+    sec.className = 'screen';
+    sec.id = id;
+    sec.innerHTML = html;
+    container.appendChild(sec);
+  });
+}
+
+const listEl = document.getElementById('screenList');
+function buildNav(){
+  if(!listEl) return;
+  listEl.innerHTML = '';
+  let counter = 0;
+  NAV.forEach(group => {
+    const lbl = document.createElement('div');
+    lbl.className = 'group-label';
+    lbl.innerHTML = `<span class="dot" style="background:${group.c}; display:inline-block; width:6px;height:6px;border-radius:50%; margin-right:5px;"></span>${group.g}`;
+    listEl.appendChild(lbl);
+    group.items.forEach(([id, name]) => {
+      counter++;
+      const b = document.createElement('button');
+      b.className = 'screen-item';
+      b.id = 'nav-' + id;
+      b.innerHTML = `<span class="num">${String(counter).padStart(2,'0')}</span>${name}`;
+      b.onclick = () => go(id);
+      listEl.appendChild(b);
+    });
+  });
+}
+
+/* ================= 导航 ================= */
+function renderTabs(){
+  const role = ROLE[currentRole];
+  const tb = document.getElementById('tabbar');
+  tb.innerHTML = role.tabs.map(t => `
+    <button class="tab" id="tab-${t.id}" onclick="go('${t.id}')">
+      <svg><use href="#${t.icon}"/></svg>${t.label}
+    </button>`).join('');
+}
+function updateUI(){
+  const meta = META[current];
+  currentRole = meta.role;
+  const isAuth = meta.auth === true;
+  const appbar = document.querySelector('.appbar');
+  if(appbar) appbar.style.display = isAuth ? 'none' : '';
+  document.getElementById('appTitle').textContent = meta.title;
+  document.getElementById('backBtn').style.display = meta.back ? '' : 'none';
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(current).classList.add('active');
+  document.getElementById(current).scrollTop = 0;
+  const isTab = !isAuth && ROLE[currentRole].tabs.some(t => t.id === current);
+  document.getElementById('tabbar').style.display = isTab ? '' : 'none';
+  document.getElementById('fab').style.display = (currentRole === 'publisher' && current === 's7') ? '' : 'none';
+  ROLE[currentRole].tabs.forEach(t => {
+    const el = document.getElementById('tab-' + t.id);
+    if (el) el.classList.toggle('active', t.id === current);
+  });
+  document.querySelectorAll('.screen-item').forEach(b => b.classList.toggle('active', b.id === 'nav-' + current));
+  document.querySelectorAll('.role-switch button').forEach(b => b.classList.toggle('active', b.dataset.role === currentRole));
+}
+function openActivity(id){
+  currentActivityId = id;
+  const a = (DATA.activities || []).find(x => String(x.id) === String(id));
+  if(a){
+    const t = document.getElementById('detailTitle');
+    if(t) t.textContent = a.title;
+    const o = document.getElementById('detailOrg');
+    if(o) o.innerHTML = ic('i-users','') + ' ' + a.org;
+    const tm = document.getElementById('detailTime');
+    if(tm) tm.textContent = a.time;
+    const loc = document.getElementById('detailLocation');
+    if(loc) loc.textContent = a.location;
+    const rc = document.getElementById('detailRecruit');
+    if(rc) rc.textContent = a.recruit + ' 人';
+  }
+  go('s2');
+  updateDetailSignupBtn();
+}
+function go(id){
+  if (id === current && !META[id].back) return;
+  if (META[current] && META[current].back) history.push(current);
+  current = id;
+  updateUI();
+}
+function goBack(){
+  const meta = META[current];
+  if (meta.back) { current = meta.back; }
+  else if (history.length) { current = history.pop(); }
+  else { current = ROLE[currentRole].home; }
+  updateUI();
+}
+function switchRole(role){
+  currentRole = role;
+  history = [];
+  current = ROLE[role].home;
+  renderTabs();
+  updateUI();
+}
+function openMyActivity(i){
+  const a = mySignups[i];
+  if(!a) return;
+  currentActivityId = 'a' + a.activity_id;
+  const st = myCheckinMap[a.activity_id] || {checkin:false, checkout:false};
+  if(st.checkout){
+    modal(`
+      <div class="modal-icon" style="background:var(--gray-100); color:var(--gray-500);">${ic('i-clock','')}</div>
+      <h3>活动已结束</h3>
+      <div class="modal-body">「${a.name}」已完成签到签退，可在「时长」中查看认定记录。</div>
+      <div class="modal-actions"><button class="btn btn-primary" onclick="closeModal()">知道了</button></div>`);
+    return;
+  }
+  if(st.checkin){ go('s17'); }
+  else { go('s4'); }
+}
+
+/* ================= 我的报名状态（真实数据同步） ================= */
+async function refreshMyState(){
+  if(!getAuthUser()){
+    mySignups = []; myCheckinMap = {};
+    renderMyActivities(); updateDetailSignupBtn();
+    return;
+  }
+  const [sr, cr] = await Promise.all([
+    api('/api/v1/signups/mine', 'GET'),
+    api('/api/v1/checkins/mine', 'GET'),
+  ]);
+  if(sr && sr.code === 0) mySignups = sr.data || [];
+  myCheckinMap = {};
+  if(cr && cr.code === 0){
+    (cr.data || []).forEach(c => {
+      if(!myCheckinMap[c.activity_id]) myCheckinMap[c.activity_id] = {checkin:false, checkout:false};
+      if(c.type === 'checkin') myCheckinMap[c.activity_id].checkin = true;
+      if(c.type === 'checkout') myCheckinMap[c.activity_id].checkout = true;
+    });
+  }
+  renderMyActivities();
+  updateDetailSignupBtn();
+}
+
+function renderMyActivities(){
+  const box = document.getElementById('myActivityList');
+  const cnt = document.getElementById('myActivityCount');
+  if(cnt) cnt.textContent = mySignups.length + ' 个';
+  if(!box) return;
+  if(!mySignups.length){
+    box.innerHTML = `<div class="empty-state"><div class="empty-ico">${ic('i-clock','')}</div><div style="font-size:15px; font-weight:600; color:var(--gray-500);">还没有报名活动</div><div class="muted mt8">去主页看看有什么活动吧</div></div>`;
+    return;
+  }
+  box.innerHTML = mySignups.map((a, i) => {
+    const st = myCheckinMap[a.activity_id] || {checkin:false, checkout:false};
+    const statusLabel = st.checkout ? '已结束' : (st.checkin ? '已签到' : '已报名');
+    const g = a.gradient || '#3B82F6,#2DD4BF';
+    return `
+<div class="card" style="padding:0; overflow:hidden; cursor:pointer;" onclick="openMyActivity(${i})">
+  <div style="height:72px; background:linear-gradient(135deg,${g}); position:relative;">
+    <span class="tag" style="position:absolute; right:12px; top:12px; background:rgba(17,24,39,.35); color:#fff;">${statusLabel}</span>
+  </div>
+  <div style="padding:14px;">
+    <div class="row"><span class="semibold" style="font-size:15px;">${a.name}</span></div>
+    <div class="row mt8" style="gap:12px;">
+      <span class="dot-tag small" style="color:var(--gray-500)"><svg width="13" height="13" style="color:var(--gray-400)"><use href="#i-calendar"/></svg>${a.time || ''}</span>
+      <span class="dot-tag small" style="color:var(--gray-500);"><svg width="13" height="13" style="color:var(--gray-400)"><use href="#i-pin"/></svg>${a.location || ''}</span>
+    </div>
+  </div>
+</div>`;
+  }).join('');
+}
+
+function updateDetailSignupBtn(){
+  const btn = document.getElementById('detailSignupBtn');
+  if(!btn) return;
+  const aid = currentActivityId ? parseInt(String(currentActivityId).replace(/^a/i, ''), 10) : null;
+  const signed = aid !== null && mySignups.some(s => s.activity_id === aid);
+  if(signed){
+    btn.textContent = '已报名 · 取消报名';
+    btn.className = 'btn btn-outline-danger btn-lg btn-block';
+    btn.onclick = () => openCancelSignup();
+  } else {
+    btn.textContent = '立即报名';
+    btn.className = 'btn btn-primary btn-lg btn-block';
+    btn.onclick = () => go('s3');
+  }
+}
+
+async function refreshActivities(){
+  try {
+    const resp = await fetch('/api/v1/test-data', {cache:'no-store'});
+    if(resp.ok){
+      const body = await resp.json();
+      if(body && body.data && body.data.activities){
+        DATA.activities = body.data.activities;
+        renderActivityList();
+        updateResultCount();
+      }
+    }
+  } catch(e) { /* 刷新失败忽略，下次进入时再拉 */ }
+}
+
+/* ================= 按钮点击动效（涟漪） ================= */
+function spawnRipple(el, x, y){
+  const rect = el.getBoundingClientRect();
+  const d = Math.max(rect.width, rect.height) * 1.6;
+  const r = document.createElement('span');
+  r.className = 'ripple';
+  const dark = el.classList.contains('btn-primary') || el.classList.contains('btn-danger') || el.classList.contains('fab');
+  if(dark) r.classList.add('light');
+  r.style.width = r.style.height = d + 'px';
+  r.style.left = (x - rect.left - d / 2) + 'px';
+  r.style.top = (y - rect.top - d / 2) + 'px';
+  el.appendChild(r);
+  setTimeout(() => r.remove(), 650);
+}
+document.addEventListener('pointerdown', function(e){
+  const el = e.target.closest('.btn, .icon-btn, .chip, .role-tab, .tabbar .tab, .back, .fab');
+  if(!el) return;
+  spawnRipple(el, e.clientX, e.clientY);
+});
+
+/* ================= 交互 ================= */
+function chip(el){ el.classList.toggle('active'); }
+function radioChip(el){
+  const row = el.closest('.chip-row') || el.parentElement;
+  row.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+function filterChip(el){
+  const row = el.closest('.chip-row') || el.parentElement;
+  const isAll = el.hasAttribute('data-all');
+  if (isAll) {
+    row.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.hasAttribute('data-all')));
+  } else {
+    el.classList.toggle('active');
+    const all = row.querySelector('.chip[data-all]');
+    const others = Array.from(row.querySelectorAll('.chip:not([data-all])'));
+    const allSelected = others.every(c => c.classList.contains('active'));
+    if (allSelected) {
+      all.classList.add('active');
+      others.forEach(c => c.classList.remove('active'));
+    } else {
+      all.classList.remove('active');
+    }
+  }
+}
+function switchSign(el, targetId){
+  const wrap = el.parentElement;
+  wrap.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  const root = el.closest('.screen');
+  root.querySelectorAll('[id^="sign-"], [id^="out-"]').forEach(n => n.style.display = 'none');
+  const t = document.getElementById(targetId);
+  if (t) t.style.display = '';
+}
+function toast(msg, type){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + (type || '');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+/* 弹窗 */
+function modal(html){
+  const mask = document.getElementById('modalMask');
+  mask.innerHTML = `<div class="modal">${html}</div>`;
+  mask.classList.add('show');
+}
+function closeModal(){ document.getElementById('modalMask').classList.remove('show'); }
+
+function openConfirm(){
+  modal(`
+    <div class="modal-icon" style="background:var(--primary-50); color:var(--primary);">${ic('i-flag','')}</div>
+    <h3>确认报名？</h3>
+    <div class="modal-body">岗位：<strong>签到引导员</strong><br>活动：${DATA.activityDetail.title}</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">再想想</button>
+      <button class="btn btn-primary" onclick="doSignup()">确认报名</button>
+    </div>`);
+}
+async function doSignup(){
+  closeModal();
+  if(!currentActivityId){ toast('请先选择活动', 'danger'); return; }
+  const r = await api('/api/v1/activities/' + currentActivityId + '/signups', 'POST', {});
+  if(r && r.code === 0){
+    toast('报名成功！', 'success');
+    await refreshMyState();
+    refreshActivities();
+    setTimeout(() => go('s1'), 700);
+  } else {
+    toast((r && r.message) || '报名失败', 'danger');
+  }
+}
+function openCancelSignup(){
+  modal(`
+    <div class="modal-icon" style="background:var(--danger-50); color:var(--danger);">${ic('i-alert','')}</div>
+    <h3>确认取消报名？</h3>
+    <div class="modal-body">你的名额将被释放，后续不可恢复。</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">保留报名</button>
+      <button class="btn btn-danger" onclick="doCancelSignup()">确认取消</button>
+    </div>`);
+}
+async function doCancelSignup(){
+  closeModal();
+  if(!currentActivityId){ toast('缺少活动信息', 'danger'); return; }
+  const aid = parseInt(String(currentActivityId).replace(/^a/i, ''), 10);
+  const mine = await api('/api/v1/signups/mine', 'GET');
+  const item = (mine && mine.code === 0) ? (mine.data || []).find(s => s.activity_id === aid) : null;
+  if(!item){ toast('未找到报名记录', 'danger'); return; }
+  const r = await api('/api/v1/signups/' + item.signup_id, 'DELETE');
+  if(r && r.code === 0){
+    toast('已取消报名');
+    await refreshMyState();
+    refreshActivities();
+    setTimeout(() => go('s1'), 700);
+  } else {
+    toast((r && r.message) || '取消失败', 'danger');
+  }
+}
+async function signedIn(){
+  if(!currentActivityId){ toast('缺少活动信息', 'danger'); return; }
+  const r = await api('/api/v1/activities/' + currentActivityId + '/checkins', 'POST', {});
+  if(r && r.code === 0){
+    toast('签到成功！', 'success');
+    await refreshMyState();
+    setTimeout(() => go('s17'), 700);
+  } else {
+    toast((r && r.message) || '签到失败', 'danger');
+  }
+}
+async function signedOut(){
+  if(!currentActivityId){ toast('缺少活动信息', 'danger'); return; }
+  const r = await api('/api/v1/activities/' + currentActivityId + '/checkouts', 'POST', {});
+  if(r && r.code === 0){
+    const h = (r.data && r.data.hours) || '';
+    toast('签退成功，已累计 ' + h + ' 小时', 'success');
+    await refreshMyState();
+    setTimeout(() => go('s5'), 700);
+  } else {
+    toast((r && r.message) || '签退失败', 'danger');
+  }
+}
+function openPublish(){
+  modal(`
+    <div class="modal-icon" style="background:var(--primary-50); color:var(--primary);">${ic('i-shield','')}</div>
+    <h3>提交审核</h3>
+    <div class="modal-body">招募将提交校方<strong>认可审核</strong>，通过后自动上线。</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">取消</button>
+      <button class="btn btn-primary" onclick="doPublish()">确认提交</button>
+    </div>`);
+}
+function doPublish(){
+  closeModal();
+  toast('已提交，等待校方审核', 'success');
+  setTimeout(() => go('s7'), 700);
+}
+function openEditConfirm(){
+  modal(`
+    <div class="modal-icon" style="background:var(--warning-50); color:var(--warning);">${ic('i-alert','')}</div>
+    <h3>二次确认</h3>
+    <div class="modal-body">本次修改涉及<strong>招募人数、活动名称</strong>等高影响字段，将<strong>自动通知 22 名</strong>已报名用户，并留痕记录。</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">取消</button>
+      <button class="btn btn-primary" onclick="doEditSave()">确认保存</button>
+    </div>`);
+}
+function doEditSave(){
+  closeModal();
+  toast('已保存并通知用户', 'success');
+  setTimeout(() => go('s7'), 700);
+}
+function openCancelActivity(){
+  const n = DATA.cancelActivity ? DATA.cancelActivity.signed : 0;
+  modal(`
+    <div class="modal-icon" style="background:var(--danger-50); color:var(--danger);">${ic('i-alert','')}</div>
+    <h3>确认取消活动？</h3>
+    <div class="modal-body">将通知 <strong>${n} 名</strong>已报名用户，操作<strong>不可撤销</strong>，并写入审计日志。</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">再想想</button>
+      <button class="btn btn-danger" onclick="doCancelActivity()">确认取消</button>
+    </div>`);
+}
+function doCancelActivity(){
+  closeModal();
+  toast('活动已取消');
+  setTimeout(() => go('s7'), 700);
+}
+function approveAudit(){
+  toast('已认可通过，招募上线', 'success');
+  setTimeout(() => go('s12'), 700);
+}
+function rejectAudit(){
+  modal(`
+    <div class="modal-icon" style="background:var(--danger-50); color:var(--danger);">${ic('i-alert','')}</div>
+    <h3>驳回招募？</h3>
+    <div class="modal-body">驳回后需发布者修改并重新提交审核。</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">取消</button>
+      <button class="btn btn-danger" onclick="closeModal(); toast('已驳回'); setTimeout(()=>go('s12'),600)">确认驳回</button>
+    </div>`);
+}
+
+/* ---- 学生选择与认定 ---- */
+function toggleStudent(el){
+  el.classList.toggle('on');
+  refreshSelection(el.closest('.screen'));
+}
+function toggleSelectAll(el){
+  const screen = el.closest('.screen');
+  const on = !el.classList.contains('on');
+  screen.querySelectorAll('.student-item .cb').forEach(c => c.classList.toggle('on', on));
+  refreshSelection(screen);
+}
+function refreshSelection(screen){
+  const items = screen.querySelectorAll('.student-item');
+  const selected = screen.querySelectorAll('.student-item .cb.on');
+  const n = selected.length;
+  const all = screen.querySelector('.cb-all');
+  if (all) all.classList.toggle('on', n > 0 && n === items.length);
+  const cnt = screen.querySelector('.sel-count');
+  if (cnt) cnt.textContent = n;
+  const selBtn = screen.querySelector('.cert-sel-btn');
+  if (selBtn) selBtn.innerHTML = `${ic('i-check')} 认定所选（${n}）`;
+}
+function setStudentStatus(row, status){
+  const t = row.querySelector('.stu-status');
+  if(!t) return;
+  if(status === 'certified'){
+    t.className = 'tag green stu-status';
+    t.textContent = '已认定';
+  } else {
+    t.className = 'tag orange stu-status';
+    t.textContent = '待认定';
+  }
+}
+function certSelected(btn){
+  const screen = btn.closest('.screen');
+  const n = screen.querySelectorAll('.student-item .cb.on').length;
+  if(n === 0){ toast('请先选择学生','danger'); return; }
+  modal(`
+    <div class="modal-icon" style="background:var(--success-50); color:var(--success-600);">${ic('i-check-circle','')}</div>
+    <h3>确认认定？</h3>
+    <div class="modal-body">将为已选 <strong>${n}</strong> 名学生认定志愿时长，认定权归本校。</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">取消</button>
+      <button class="btn btn-primary" onclick="doCert(${n})">确认认定</button>
+    </div>`);
+}
+function doCert(n){
+  closeModal();
+  const screen = document.querySelector('.screen.active');
+  screen.querySelectorAll('.student-item .cb.on').forEach(cb => {
+    setStudentStatus(cb.closest('.student-item'), 'certified');
+    cb.classList.remove('on');
+  });
+  refreshSelection(screen);
+  toast('已认定 ' + n + ' 人','success');
+}
+function batchCertAll(btn){
+  const screen = btn.closest('.screen');
+  // 点击批量认定：先全选
+  screen.querySelectorAll('.student-item .cb').forEach(cb => cb.classList.add('on'));
+  refreshSelection(screen);
+  const total = screen.querySelectorAll('.student-item').length;
+  // 二次询问是否全部认定
+  modal(`
+    <div class="modal-icon" style="background:var(--success-50); color:var(--success-600);">${ic('i-check-circle','')}</div>
+    <h3>是否全部认定？</h3>
+    <div class="modal-body">已自动选中全部 <strong>${total}</strong> 名学生，确认认定全部志愿时长？</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">取消</button>
+      <button class="btn btn-primary" onclick="doCert(${total})">确认全部认定</button>
+    </div>`);
+}
+function revokeSelected(btn){
+  const screen = btn.closest('.screen');
+  const n = screen.querySelectorAll('.student-item .cb.on').length;
+  if(n === 0){ toast('请先选择学生','danger'); return; }
+  modal(`
+    <div class="modal-icon" style="background:var(--danger-50); color:var(--danger);">${ic('i-alert','')}</div>
+    <h3>撤销认定？</h3>
+    <div class="modal-body">将撤销已选 <strong>${n}</strong> 名学生的志愿时长认定，认定状态退回「待认定」。</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">取消</button>
+      <button class="btn btn-danger" onclick="doRevoke(${n})">确认撤销</button>
+    </div>`);
+}
+function doRevoke(n){
+  closeModal();
+  const screen = document.querySelector('.screen.active');
+  screen.querySelectorAll('.student-item .cb.on').forEach(cb => {
+    setStudentStatus(cb.closest('.student-item'), 'pending');
+    cb.classList.remove('on');
+  });
+  refreshSelection(screen);
+  toast('已撤销 ' + n + ' 人认定','success');
+}
+function exportSelected(btn){
+  const screen = btn.closest('.screen');
+  const rows = Array.from(screen.querySelectorAll('.student-item .cb.on')).map(cb => cb.closest('.student-item'));
+  if(!rows.length){ toast('请先选择学生','danger'); return; }
+  const header = ['姓名','学号','签到','签退','实际时长(h)'];
+  const lines = rows.map(r => [r.dataset.name, r.dataset.id, r.dataset.checkin, r.dataset.checkout, r.dataset.hours].join(','));
+  const csv = '\ufeff' + header.join(',') + '\n' + lines.join('\n');
+  try {
+    const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '选中学生名单.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(a.href);
+  } catch(e){}
+  toast('已导出 ' + rows.length + ' 人名单','success');
+}
+
+/* ================= 岗位设置 ================= */
+const PRESET_POSITIONS = ['签到引导员','物资搬运','摄影记录','讲解志愿者','医疗服务','场务协助'];
+let publishPositions = [
+  { name:'签到引导员', count:10 },
+  { name:'物资搬运', count:8 },
+  { name:'摄影记录', count:2 }
+];
+function renderPositions(){
+  const box = document.getElementById('posList');
+  if(!box) return;
+  box.innerHTML = publishPositions.map(p => `
+    <span class="pos-tag">${p.name} ×${p.count}<b onclick="removePosition('${p.name}')">×</b></span>
+  `).join('');
+}
+function removePosition(name){
+  publishPositions = publishPositions.filter(p => p.name !== name);
+  renderPositions();
+  toast('已移除岗位：' + name);
+}
+function addPresetPosition(name){
+  if(publishPositions.some(p => p.name === name)){ toast('该岗位已添加','danger'); return; }
+  publishPositions.push({ name, count: 1 });
+  renderPositions();
+  closeModal();
+  toast('已添加岗位：' + name, 'success');
+}
+function openPositionModal(){
+  modal(`
+    <h3>添加岗位</h3>
+    <div class="modal-body" style="text-align:left;">
+      <div style="font-size:13px; font-weight:700; color:var(--gray-700); margin-bottom:8px;">选择预设岗位</div>
+      <div class="chip-row" style="margin-bottom:14px;">
+        ${PRESET_POSITIONS.map(n => `<span class="chip" onclick="addPresetPosition('${n}')">${n}</span>`).join('')}
+      </div>
+      <div class="divider"></div>
+      <div style="font-size:13px; font-weight:700; color:var(--gray-700); margin:10px 0 8px;">或手动添加</div>
+      <input class="input" id="posName" placeholder="岗位名称" style="margin-bottom:8px;">
+      <input class="input" id="posCount" type="number" placeholder="需求人数" value="1" min="1">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">取消</button>
+      <button class="btn btn-primary" onclick="confirmAddPosition()">确认添加</button>
+    </div>`);
+}
+function confirmAddPosition(){
+  const name = document.getElementById('posName').value.trim();
+  const count = parseInt(document.getElementById('posCount').value) || 1;
+  if(!name){ toast('请输入岗位名称','danger'); return; }
+  if(publishPositions.some(p => p.name === name)){ toast('该岗位已添加','danger'); return; }
+  publishPositions.push({ name, count });
+  closeModal();
+  renderPositions();
+  toast('已添加岗位：' + name, 'success');
+}
+
+/* ================= 认证（登录 / 注册） ================= */
+const AUTH_KEY = 'qh_token';
+const USER_KEY = 'qh_user';
+
+async function api(path, method, body){
+  try {
+    const opts = { method: method || 'GET', headers: { 'Content-Type': 'application/json' } };
+    const token = localStorage.getItem(AUTH_KEY);
+    if (token) opts.headers['Authorization'] = 'Bearer ' + token;
+    if (body !== undefined) opts.body = JSON.stringify(body);
+    const r = await fetch(path, opts);
+    return await r.json();
+  } catch (e) {
+    return { code: -1, message: '网络错误，请确认后端已启动' };
+  }
+}
+
+function setAuth(data){
+  localStorage.setItem(AUTH_KEY, data.token);
+  localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+}
+
+function getAuthUser(){
+  try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); }
+  catch(e){ return null; }
+}
+
+function clearAuth(){
+  localStorage.removeItem(AUTH_KEY);
+  localStorage.removeItem(USER_KEY);
+}
+
+function enterByRole(role){
+  const map = { student: 'student', publisher_internal: 'publisher', admin: 'admin' };
+  switchRole(map[role] || 'student');
+}
+
+function togglePwd(inputId, btn){
+  const input = document.getElementById(inputId);
+  if(!input) return;
+  const show = input.type === 'password';
+  input.type = show ? 'text' : 'password';
+  btn.innerHTML = show ? ic('i-eye-off') : ic('i-eye');
+}
+
+/* 身份配置：注册字段 + 登录账号提示 */
+const AUTH_ROLES = [
+  { key:'student', role:'student', label:'学生端',
+    loginLabel:'手机号 / 学号', loginPlaceholder:'请输入手机号或学号',
+    fields:[
+      { id:'regName', label:'姓名', type:'text', placeholder:'请输入姓名', required:false },
+      { id:'regStudentNo', label:'学号', type:'text', placeholder:'请输入学号', required:true },
+      { id:'regPhone', label:'手机号', type:'tel', placeholder:'请输入 11 位手机号', required:true },
+      { id:'regPwd', label:'密码', type:'password', placeholder:'至少 6 位', required:true },
+    ]},
+  { key:'publisher', role:'publisher_internal', label:'发布者端',
+    loginLabel:'手机号', loginPlaceholder:'请输入手机号',
+    fields:[
+      { id:'regName', label:'姓名', type:'text', placeholder:'请输入姓名', required:false },
+      { id:'regPhone', label:'手机号', type:'tel', placeholder:'请输入 11 位手机号', required:true },
+      { id:'regPwd', label:'密码', type:'password', placeholder:'至少 6 位', required:true },
+      { id:'regOrg', label:'所属机构', type:'text', placeholder:'请输入所属机构', required:true },
+    ]},
+  { key:'admin', role:'admin', label:'校方端',
+    loginLabel:'手机号 / 工号', loginPlaceholder:'请输入手机号或工号',
+    fields:[
+      { id:'regName', label:'姓名', type:'text', placeholder:'请输入姓名', required:false },
+      { id:'regPhone', label:'手机号', type:'tel', placeholder:'请输入 11 位手机号', required:true },
+      { id:'regPwd', label:'密码', type:'password', placeholder:'至少 6 位', required:true },
+      { id:'regOrg', label:'所属单位', type:'text', placeholder:'请输入所属单位', required:true },
+      { id:'regWorkerNo', label:'工号', type:'text', placeholder:'请输入工号', required:true },
+    ]},
+];
+let authRoleKey = 'student';
+
+function setAuthRole(key){
+  authRoleKey = key;
+  document.querySelectorAll('.role-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.roleKey === key);
+  });
+  updateLoginAccount();
+  renderRegFields();
+}
+
+function updateLoginAccount(){
+  const label = document.getElementById('loginAccountLabel');
+  const input = document.getElementById('loginAccount');
+  if(!label || !input) return;
+  const cfg = AUTH_ROLES.find(r => r.key === authRoleKey);
+  label.textContent = cfg.loginLabel;
+  input.placeholder = cfg.loginPlaceholder;
+}
+
+function renderRegFields(){
+  const container = document.getElementById('regFields');
+  if(!container) return;
+  const cfg = AUTH_ROLES.find(r => r.key === authRoleKey);
+  container.innerHTML = cfg.fields.map(f => `
+    <div class="field">
+      <label>${f.label} ${f.required ? '<span class="req">*</span>' : '<span class="hint">选填</span>'}</label>
+      ${f.type === 'password'
+        ? `<div class="pwd-wrap"><input class="input" id="${f.id}" type="password" placeholder="${f.placeholder}"><button class="pwd-eye" onclick="togglePwd('${f.id}', this)">${ic('i-eye')}</button></div>`
+        : `<input class="input" id="${f.id}" type="${f.type}" ${f.type === 'tel' ? 'maxlength="11" inputmode="numeric"' : ''} placeholder="${f.placeholder}">`}
+    </div>`).join('');
+}
+
+async function doLogin(){
+  const account = (document.getElementById('loginAccount').value || '').trim();
+  const password = document.getElementById('loginPwd').value || '';
+  if(!account){ toast('请输入账号', 'danger'); return; }
+  if(password.length < 6){ toast('密码至少 6 位', 'danger'); return; }
+  const r = await api('/api/v1/auth/login', 'POST', { account, password });
+  if(r && r.code === 0){
+    setAuth(r.data);
+    toast('登录成功', 'success');
+    setTimeout(() => { enterByRole(r.data.user.role); refreshMyState(); }, 500);
+  } else {
+    toast((r && r.message) || '登录失败', 'danger');
+  }
+}
+
+async function doRegister(){
+  const cfg = AUTH_ROLES.find(r => r.key === authRoleKey);
+  const val = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const name = val('regName');
+  const phone = val('regPhone');
+  const password = val('regPwd');
+  const student_no = val('regStudentNo');
+  const org = val('regOrg');
+  const worker_no = val('regWorkerNo');
+  if(!/^1\d{10}$/.test(phone)){ toast('请输入 11 位手机号', 'danger'); return; }
+  if(password.length < 6){ toast('密码至少 6 位', 'danger'); return; }
+  if(cfg.key === 'student' && !student_no){ toast('请填写学号', 'danger'); return; }
+  if(cfg.key === 'publisher' && !org){ toast('请填写所属机构', 'danger'); return; }
+  if(cfg.key === 'admin'){
+    if(!org){ toast('请填写所属单位', 'danger'); return; }
+    if(!worker_no){ toast('请填写工号', 'danger'); return; }
+  }
+  const r = await api('/api/v1/auth/register', 'POST', { role: cfg.role, phone, password, name, student_no, org, worker_no });
+  if(r && r.code === 0){
+    setAuth(r.data);
+    toast('注册成功，已自动登录', 'success');
+    setTimeout(() => { enterByRole(r.data.user.role); refreshMyState(); }, 500);
+  } else {
+    toast((r && r.message) || '注册失败', 'danger');
+  }
+}
+
+function guestBrowse(){
+  clearAuth();
+  switchRole('student');
+  toast('已进入游客浏览模式');
+}
+
+function logout(){
+  clearAuth();
+  mySignups = [];
+  myCheckinMap = {};
+  history = [];
+  current = 's25';
+  updateUI();
+  toast('已退出登录');
+}
+
+/* ================= 初始化 ================= */
+async function init(){
+  DATA = await loadData();
+  markDataSource();
+  if(!DATA){
+    const c = document.getElementById('screenContainer');
+    c.innerHTML = '<div style="padding:48px 24px; text-align:center; color:var(--gray-500);"><div style="font-size:15px; font-weight:700; margin-bottom:10px;">数据加载失败</div><div class="muted" style="line-height:1.7;">未能读取后端数据。请在 backend 目录运行 <b>python app.py</b>，通过 http://127.0.0.1:8787/ 访问；不要直接双击打开 HTML 文件。</div></div>';
+    return;
+  }
+  SCREENS = buildScreens(DATA);
+  renderScreens();
+  renderPositions();
+  buildNav();
+  renderTabs();
+  renderRegFields();
+  updateLoginAccount();
+  // 登录态判断：已登录则按角色进入对应端，否则显示登录页
+  const user = getAuthUser();
+  if(user && user.role){
+    enterByRole(user.role);
+  } else {
+    current = 's25';
+    updateUI();
+  }
+  refreshMyState();   // 拉取真实报名/签到状态，驱动「我的活动」与详情按钮
+  const d = new Date();
+  document.getElementById('sbTime').textContent =
+    String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+}
+init();
+
+
+</script>
+</body>
+</html>

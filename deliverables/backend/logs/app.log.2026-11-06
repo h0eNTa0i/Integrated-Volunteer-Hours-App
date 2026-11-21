@@ -1,0 +1,226 @@
+2026-11-06 15:53:09 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-06 15:54:05 [INFO] [rid=38a8b0510e81] → GET /api/v1/test-data
+2026-11-06 15:54:06 [INFO] [rid=38a8b0510e81] ← GET /api/v1/test-data -> 200 (48.4ms)
+2026-11-06 15:54:15 [INFO] [rid=4184d877a7d9] → POST /api/v1/activities/a3/checkins
+2026-11-06 15:54:15 [INFO] [rid=4184d877a7d9] ← POST /api/v1/activities/a3/checkins -> 200 (77.8ms)
+2026-11-06 15:54:22 [INFO] [rid=1ae825c8da96] → POST /api/v1/activities/a2/checkouts
+2026-11-06 15:54:22 [INFO] [rid=1ae825c8da96] ← POST /api/v1/activities/a2/checkouts -> 200 (56.6ms)
+2026-11-06 15:54:32 [INFO] [rid=4135a1e8a4be] → POST /api/v1/activities/a3/signups
+2026-11-06 15:54:32 [INFO] [rid=4135a1e8a4be] 报名成功 user_id=14 activity_id=3 signup_id=4
+2026-11-06 15:54:32 [INFO] [rid=4135a1e8a4be] ← POST /api/v1/activities/a3/signups -> 200 (252.5ms)
+2026-11-06 15:54:35 [INFO] [rid=c1a0790438ab] → POST /api/v1/activities/a3/checkins
+2026-11-06 15:54:35 [INFO] [rid=c1a0790438ab] 签到成功 user_id=14 activity_id=3
+2026-11-06 15:54:35 [INFO] [rid=c1a0790438ab] ← POST /api/v1/activities/a3/checkins -> 200 (147.1ms)
+2026-11-06 15:54:38 [INFO] [rid=44f2ea3e568d] → GET /api/v1/signups/mine
+2026-11-06 15:54:38 [INFO] [rid=44f2ea3e568d] ← GET /api/v1/signups/mine -> 200 (72.8ms)
+2026-11-06 15:54:38 [INFO] [rid=815187c84b16] → DELETE /api/v1/signups/4
+2026-11-06 15:54:39 [INFO] [rid=815187c84b16] 取消报名 user_id=14 signup_id=4
+2026-11-06 15:54:39 [INFO] [rid=815187c84b16] ← DELETE /api/v1/signups/4 -> 200 (191.9ms)
+2026-11-06 18:58:10 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-06 18:58:46 [INFO] [rid=f9a3cd2009ec] → GET /api/v1/test-data
+2026-11-06 18:58:47 [INFO] [rid=f9a3cd2009ec] ← GET /api/v1/test-data -> 200 (51.1ms)
+2026-11-06 18:59:14 [INFO] [rid=cf13edc7b1e7] → POST /api/v1/auth/login
+2026-11-06 18:59:14 [INFO] [rid=cf13edc7b1e7] ← POST /api/v1/auth/login -> 200 (63.2ms)
+2026-11-06 18:59:17 [INFO] [rid=3b491330c369] → POST /api/v1/auth/login
+2026-11-06 18:59:17 [INFO] [rid=3b491330c369] 登录成功 user_id=14 role=student
+2026-11-06 18:59:17 [INFO] [rid=3b491330c369] ← POST /api/v1/auth/login -> 200 (181.1ms)
+2026-11-06 19:00:00 [INFO] [rid=07e1ae3f048d] → POST /api/v1/activities/a1/signups
+2026-11-06 19:00:00 [INFO] [rid=07e1ae3f048d] 报名成功 user_id=14 activity_id=1 signup_id=55
+2026-11-06 19:00:00 [INFO] [rid=07e1ae3f048d] ← POST /api/v1/activities/a1/signups -> 200 (191.3ms)
+2026-11-06 19:00:12 [INFO] [rid=5324e1390423] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:00:12 [INFO] [rid=5324e1390423] ← POST /api/v1/activities/a3/checkins -> 200 (51.8ms)
+2026-11-06 19:00:25 [INFO] [rid=0100b58427aa] → POST /api/v1/activities/a3/signups
+2026-11-06 19:00:25 [INFO] [rid=0100b58427aa] ← POST /api/v1/activities/a3/signups -> 200 (96.7ms)
+2026-11-06 19:00:31 [INFO] [rid=a74ca24ebc05] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:00:31 [INFO] [rid=a74ca24ebc05] ← POST /api/v1/activities/a3/checkins -> 200 (45.1ms)
+2026-11-06 19:00:34 [INFO] [rid=bdc49c58a9f6] → GET /api/v1/signups/mine
+2026-11-06 19:00:34 [INFO] [rid=bdc49c58a9f6] ← GET /api/v1/signups/mine -> 200 (54.8ms)
+2026-11-06 19:00:50 [INFO] [rid=fc3b936aef4e] → POST /api/v1/auth/login
+2026-11-06 19:00:50 [INFO] [rid=fc3b936aef4e] 登录成功 user_id=14 role=student
+2026-11-06 19:00:50 [INFO] [rid=fc3b936aef4e] ← POST /api/v1/auth/login -> 200 (122.0ms)
+2026-11-06 19:01:51 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-06 19:01:58 [INFO] [rid=1855b9777852] → GET /api/v1/test-data
+2026-11-06 19:01:58 [INFO] [rid=1855b9777852] ← GET /api/v1/test-data -> 200 (35.0ms)
+2026-11-06 19:02:23 [INFO] [rid=5053b9a5943c] → POST /api/v1/auth/register
+2026-11-06 19:02:23 [INFO] [rid=5053b9a5943c] 注册成功 user_id=69 role=publisher_internal
+2026-11-06 19:02:23 [INFO] [rid=5053b9a5943c] ← POST /api/v1/auth/register -> 200 (208.9ms)
+2026-11-06 19:03:13 [INFO] [rid=5c9c32fa8725] → POST /api/v1/auth/register
+2026-11-06 19:03:14 [INFO] [rid=5c9c32fa8725] 注册成功 user_id=70 role=admin
+2026-11-06 19:03:14 [INFO] [rid=5c9c32fa8725] ← POST /api/v1/auth/register -> 200 (247.2ms)
+2026-11-06 19:04:17 [INFO] [rid=7c4a9824cf64] → POST /api/v1/auth/login
+2026-11-06 19:04:17 [INFO] [rid=7c4a9824cf64] 登录成功 user_id=14 role=student
+2026-11-06 19:04:17 [INFO] [rid=7c4a9824cf64] ← POST /api/v1/auth/login -> 200 (139.5ms)
+2026-11-06 19:04:37 [INFO] [rid=0d64a967caee] → POST /api/v1/auth/login
+2026-11-06 19:04:37 [INFO] [rid=0d64a967caee] 登录成功 user_id=69 role=publisher_internal
+2026-11-06 19:04:37 [INFO] [rid=0d64a967caee] ← POST /api/v1/auth/login -> 200 (131.0ms)
+2026-11-06 19:04:48 [INFO] [rid=35c38ff86bd0] → POST /api/v1/auth/login
+2026-11-06 19:04:48 [INFO] [rid=35c38ff86bd0] 登录成功 user_id=70 role=admin
+2026-11-06 19:04:48 [INFO] [rid=35c38ff86bd0] ← POST /api/v1/auth/login -> 200 (131.8ms)
+2026-11-06 19:04:58 [INFO] [rid=16ea587edd22] → POST /api/v1/auth/login
+2026-11-06 19:04:59 [INFO] [rid=16ea587edd22] 登录成功 user_id=70 role=admin
+2026-11-06 19:04:59 [INFO] [rid=16ea587edd22] ← POST /api/v1/auth/login -> 200 (124.8ms)
+2026-11-06 19:05:07 [INFO] [rid=aa8598cdc64d] → POST /api/v1/auth/login
+2026-11-06 19:05:07 [INFO] [rid=aa8598cdc64d] 登录成功 user_id=14 role=student
+2026-11-06 19:05:07 [INFO] [rid=aa8598cdc64d] ← POST /api/v1/auth/login -> 200 (129.8ms)
+2026-11-06 19:05:19 [INFO] [rid=9c2706ff4f74] → POST /api/v1/activities/a2/checkouts
+2026-11-06 19:05:19 [INFO] [rid=9c2706ff4f74] ← POST /api/v1/activities/a2/checkouts -> 200 (46.2ms)
+2026-11-06 19:05:21 [INFO] [rid=79d42ec18f62] → GET /api/v1/signups/mine
+2026-11-06 19:05:21 [INFO] [rid=79d42ec18f62] ← GET /api/v1/signups/mine -> 200 (26.0ms)
+2026-11-06 19:05:24 [INFO] [rid=57f388c1ffcf] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:05:24 [INFO] [rid=57f388c1ffcf] ← POST /api/v1/activities/a3/checkins -> 200 (46.4ms)
+2026-11-06 19:05:26 [INFO] [rid=27a9970341bf] → GET /api/v1/signups/mine
+2026-11-06 19:05:26 [INFO] [rid=27a9970341bf] ← GET /api/v1/signups/mine -> 200 (38.0ms)
+2026-11-06 19:05:31 [INFO] [rid=619c73a88e1b] → GET /api/v1/signups/mine
+2026-11-06 19:05:31 [INFO] [rid=619c73a88e1b] ← GET /api/v1/signups/mine -> 200 (41.0ms)
+2026-11-06 19:05:31 [INFO] [rid=88664c22cb24] → DELETE /api/v1/signups/55
+2026-11-06 19:05:31 [INFO] [rid=88664c22cb24] 取消报名 user_id=14 signup_id=55
+2026-11-06 19:05:31 [INFO] [rid=88664c22cb24] ← DELETE /api/v1/signups/55 -> 200 (165.7ms)
+2026-11-06 19:05:43 [INFO] [rid=df1f4669431e] → POST /api/v1/activities/a2/signups
+2026-11-06 19:05:43 [INFO] [rid=df1f4669431e] ← POST /api/v1/activities/a2/signups -> 200 (36.2ms)
+2026-11-06 19:05:53 [INFO] [rid=f4707cd5170e] → POST /api/v1/activities/a3/signups
+2026-11-06 19:05:53 [INFO] [rid=f4707cd5170e] ← POST /api/v1/activities/a3/signups -> 200 (99.7ms)
+2026-11-06 19:05:59 [INFO] [rid=2ac8c491578a] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:05:59 [INFO] [rid=2ac8c491578a] ← POST /api/v1/activities/a3/checkins -> 200 (42.5ms)
+2026-11-06 19:06:25 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-06 19:06:48 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-06 19:07:07 [INFO] [rid=7fcb688073d7] → GET /api/v1/test-data
+2026-11-06 19:07:07 [INFO] [rid=7fcb688073d7] ← GET /api/v1/test-data -> 200 (55.6ms)
+2026-11-06 19:07:10 [INFO] [rid=b4445db7aad6] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:07:10 [INFO] [rid=b4445db7aad6] ← POST /api/v1/activities/a3/checkins -> 200 (74.5ms)
+2026-11-06 19:07:17 [INFO] [rid=60f04eac48c3] → POST /api/v1/activities/a3/signups
+2026-11-06 19:07:17 [INFO] [rid=60f04eac48c3] ← POST /api/v1/activities/a3/signups -> 200 (109.7ms)
+2026-11-06 19:07:24 [INFO] [rid=ad1d09a0a758] → POST /api/v1/auth/login
+2026-11-06 19:07:24 [INFO] [rid=ad1d09a0a758] 登录成功 user_id=14 role=student
+2026-11-06 19:07:24 [INFO] [rid=ad1d09a0a758] ← POST /api/v1/auth/login -> 200 (168.8ms)
+2026-11-06 19:07:27 [INFO] [rid=9570f49fa905] → POST /api/v1/activities/a2/checkouts
+2026-11-06 19:07:27 [INFO] [rid=9570f49fa905] ← POST /api/v1/activities/a2/checkouts -> 200 (64.7ms)
+2026-11-06 19:07:31 [INFO] [rid=b379c1cefaba] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:07:31 [INFO] [rid=b379c1cefaba] ← POST /api/v1/activities/a3/checkins -> 200 (74.5ms)
+2026-11-06 19:07:37 [INFO] [rid=f4e00111b4ed] → POST /api/v1/activities/a2/signups
+2026-11-06 19:07:37 [INFO] [rid=f4e00111b4ed] ← POST /api/v1/activities/a2/signups -> 200 (69.2ms)
+2026-11-06 19:08:16 [INFO] [rid=0567dde97925] → GET /api/v1/signups/mine
+2026-11-06 19:08:16 [INFO] [rid=0567dde97925] ← GET /api/v1/signups/mine -> 200 (65.9ms)
+2026-11-06 19:08:20 [INFO] [rid=9ad5ee92a379] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:08:20 [INFO] [rid=9ad5ee92a379] ← POST /api/v1/activities/a3/checkins -> 200 (76.2ms)
+2026-11-06 19:08:22 [INFO] [rid=5c7ab47a9620] → GET /api/v1/signups/mine
+2026-11-06 19:08:22 [INFO] [rid=5c7ab47a9620] ← GET /api/v1/signups/mine -> 200 (70.3ms)
+2026-11-06 19:08:25 [INFO] [rid=8a8cb9685323] → GET /api/v1/signups/mine
+2026-11-06 19:08:25 [INFO] [rid=8a8cb9685323] ← GET /api/v1/signups/mine -> 200 (73.8ms)
+2026-11-06 19:08:35 [INFO] [rid=2cfb2277c4f3] → POST /api/v1/activities/a3/signups
+2026-11-06 19:08:35 [INFO] [rid=2cfb2277c4f3] ← POST /api/v1/activities/a3/signups -> 200 (126.8ms)
+2026-11-06 19:08:43 [INFO] [rid=09b2ccefccd9] → POST /api/v1/activities/a4/signups
+2026-11-06 19:08:43 [INFO] [rid=09b2ccefccd9] 报名成功 user_id=14 activity_id=4 signup_id=106
+2026-11-06 19:08:43 [INFO] [rid=09b2ccefccd9] ← POST /api/v1/activities/a4/signups -> 200 (255.1ms)
+2026-11-06 19:09:19 [INFO] [rid=ea3d6ec11526] → POST /api/v1/auth/register
+2026-11-06 19:09:19 [INFO] [rid=ea3d6ec11526] 注册成功 user_id=120 role=student
+2026-11-06 19:09:19 [INFO] [rid=ea3d6ec11526] ← POST /api/v1/auth/register -> 200 (304.8ms)
+2026-11-06 19:09:24 [INFO] [rid=29ab3c2316ff] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:09:24 [INFO] [rid=29ab3c2316ff] ← POST /api/v1/activities/a3/checkins -> 200 (72.8ms)
+2026-11-06 19:09:29 [INFO] [rid=0ce8ca0efff2] → POST /api/v1/activities/a3/signups
+2026-11-06 19:09:29 [INFO] [rid=0ce8ca0efff2] 报名成功 user_id=120 activity_id=3 signup_id=107
+2026-11-06 19:09:29 [INFO] [rid=0ce8ca0efff2] ← POST /api/v1/activities/a3/signups -> 200 (250.4ms)
+2026-11-06 19:09:32 [INFO] [rid=a2f215fa3376] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:09:32 [INFO] [rid=a2f215fa3376] 签到成功 user_id=120 activity_id=3
+2026-11-06 19:09:32 [INFO] [rid=a2f215fa3376] ← POST /api/v1/activities/a3/checkins -> 200 (137.8ms)
+2026-11-06 19:09:39 [INFO] [rid=b791333cff81] → POST /api/v1/activities/a3/checkouts
+2026-11-06 19:09:40 [INFO] [rid=b791333cff81] 签退成功 user_id=120 activity_id=3
+2026-11-06 19:09:40 [INFO] [rid=b791333cff81] 生成待认定时长 user_id=120 activity_id=3 hours=2.0
+2026-11-06 19:09:40 [INFO] [rid=b791333cff81] ← POST /api/v1/activities/a3/checkouts -> 200 (329.2ms)
+2026-11-06 19:10:22 [INFO] [rid=63a3631e9c3b] → POST /api/v1/auth/register
+2026-11-06 19:10:23 [INFO] [rid=63a3631e9c3b] 注册成功 user_id=121 role=student
+2026-11-06 19:10:23 [INFO] [rid=63a3631e9c3b] ← POST /api/v1/auth/register -> 200 (308.9ms)
+2026-11-06 19:10:26 [INFO] [rid=4aca7c010b8c] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:10:26 [INFO] [rid=4aca7c010b8c] ← POST /api/v1/activities/a3/checkins -> 200 (57.6ms)
+2026-11-06 19:10:32 [INFO] [rid=083c4be647b5] → POST /api/v1/activities/a3/signups
+2026-11-06 19:10:32 [INFO] [rid=083c4be647b5] 报名成功 user_id=121 activity_id=3 signup_id=108
+2026-11-06 19:10:32 [INFO] [rid=083c4be647b5] ← POST /api/v1/activities/a3/signups -> 200 (288.9ms)
+2026-11-06 19:10:35 [INFO] [rid=8e40acd0ecee] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:10:35 [INFO] [rid=8e40acd0ecee] 签到成功 user_id=121 activity_id=3
+2026-11-06 19:10:35 [INFO] [rid=8e40acd0ecee] ← POST /api/v1/activities/a3/checkins -> 200 (186.5ms)
+2026-11-06 19:10:38 [INFO] [rid=eac84c3815ab] → POST /api/v1/activities/a3/checkouts
+2026-11-06 19:10:38 [INFO] [rid=eac84c3815ab] 签退成功 user_id=121 activity_id=3
+2026-11-06 19:10:38 [INFO] [rid=eac84c3815ab] 生成待认定时长 user_id=121 activity_id=3 hours=2.0
+2026-11-06 19:10:38 [INFO] [rid=eac84c3815ab] ← POST /api/v1/activities/a3/checkouts -> 200 (323.5ms)
+2026-11-06 19:10:41 [INFO] [rid=fc8d3dc6bd73] → POST /api/v1/activities/a2/checkouts
+2026-11-06 19:10:41 [INFO] [rid=fc8d3dc6bd73] ← POST /api/v1/activities/a2/checkouts -> 200 (68.9ms)
+2026-11-06 19:10:48 [INFO] [rid=18cf760f2026] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:10:48 [INFO] [rid=18cf760f2026] ← POST /api/v1/activities/a3/checkins -> 200 (129.3ms)
+2026-11-06 19:10:50 [INFO] [rid=8fa6ffb7bb58] → GET /api/v1/signups/mine
+2026-11-06 19:10:50 [INFO] [rid=8fa6ffb7bb58] ← GET /api/v1/signups/mine -> 200 (62.4ms)
+2026-11-06 19:10:50 [INFO] [rid=57503f59fd37] → DELETE /api/v1/signups/108
+2026-11-06 19:10:50 [INFO] [rid=57503f59fd37] 取消报名 user_id=121 signup_id=108
+2026-11-06 19:10:50 [INFO] [rid=57503f59fd37] ← DELETE /api/v1/signups/108 -> 200 (177.7ms)
+2026-11-06 19:10:53 [INFO] [rid=77ca9c686252] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:10:53 [INFO] [rid=77ca9c686252] ← POST /api/v1/activities/a3/checkins -> 200 (71.9ms)
+2026-11-06 19:10:58 [INFO] [rid=62d82ca78e5d] → POST /api/v1/activities/a3/signups
+2026-11-06 19:10:58 [INFO] [rid=62d82ca78e5d] ← POST /api/v1/activities/a3/signups -> 200 (123.3ms)
+2026-11-06 19:11:22 [INFO] [rid=7c0923f76185] → POST /api/v1/auth/register
+2026-11-06 19:11:23 [INFO] [rid=7c0923f76185] 注册成功 user_id=122 role=student
+2026-11-06 19:11:23 [INFO] [rid=7c0923f76185] ← POST /api/v1/auth/register -> 200 (329.8ms)
+2026-11-06 19:11:41 [INFO] [rid=c6be3d812ea2] → POST /api/v1/auth/login
+2026-11-06 19:11:41 [INFO] [rid=c6be3d812ea2] 登录成功 user_id=122 role=student
+2026-11-06 19:11:41 [INFO] [rid=c6be3d812ea2] ← POST /api/v1/auth/login -> 200 (175.8ms)
+2026-11-06 19:14:48 [INFO] [rid=6c4172684cc2] → POST /api/v1/auth/register
+2026-11-06 19:14:48 [INFO] [rid=6c4172684cc2] 注册成功 user_id=123 role=student
+2026-11-06 19:14:48 [INFO] [rid=6c4172684cc2] ← POST /api/v1/auth/register -> 200 (306.9ms)
+2026-11-06 19:14:59 [INFO] [rid=f4d6bab401e4] → POST /api/v1/activities/a1/signups
+2026-11-06 19:14:59 [INFO] [rid=f4d6bab401e4] 报名成功 user_id=123 activity_id=1 signup_id=109
+2026-11-06 19:14:59 [INFO] [rid=f4d6bab401e4] ← POST /api/v1/activities/a1/signups -> 200 (258.0ms)
+2026-11-06 19:15:08 [INFO] [rid=d568df25b33a] → GET /api/v1/signups/mine
+2026-11-06 19:15:08 [INFO] [rid=d568df25b33a] ← GET /api/v1/signups/mine -> 200 (68.4ms)
+2026-11-06 19:15:08 [INFO] [rid=2c796943fd18] → DELETE /api/v1/signups/109
+2026-11-06 19:15:08 [INFO] [rid=2c796943fd18] 取消报名 user_id=123 signup_id=109
+2026-11-06 19:15:08 [INFO] [rid=2c796943fd18] ← DELETE /api/v1/signups/109 -> 200 (255.1ms)
+2026-11-06 19:15:16 [INFO] [rid=074821a9e950] → POST /api/v1/activities/a3/signups
+2026-11-06 19:15:16 [INFO] [rid=074821a9e950] 报名成功 user_id=123 activity_id=3 signup_id=110
+2026-11-06 19:15:16 [INFO] [rid=074821a9e950] ← POST /api/v1/activities/a3/signups -> 200 (246.7ms)
+2026-11-06 19:15:21 [INFO] [rid=9d02852ea7c4] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:15:21 [INFO] [rid=9d02852ea7c4] 签到成功 user_id=123 activity_id=3
+2026-11-06 19:15:21 [INFO] [rid=9d02852ea7c4] ← POST /api/v1/activities/a3/checkins -> 200 (144.4ms)
+2026-11-06 19:15:26 [INFO] [rid=b91fcd2b554b] → POST /api/v1/activities/a3/checkouts
+2026-11-06 19:15:26 [INFO] [rid=b91fcd2b554b] 签退成功 user_id=123 activity_id=3
+2026-11-06 19:15:26 [INFO] [rid=b91fcd2b554b] 生成待认定时长 user_id=123 activity_id=3 hours=2.0
+2026-11-06 19:15:26 [INFO] [rid=b91fcd2b554b] ← POST /api/v1/activities/a3/checkouts -> 200 (342.9ms)
+2026-11-06 19:15:35 [INFO] [rid=332dc251abce] → POST /api/v1/activities/a2/checkouts
+2026-11-06 19:15:35 [INFO] [rid=332dc251abce] ← POST /api/v1/activities/a2/checkouts -> 200 (74.5ms)
+2026-11-06 19:16:09 [INFO] [rid=f73abc2998be] → POST /api/v1/auth/register
+2026-11-06 19:16:09 [INFO] [rid=f73abc2998be] 注册成功 user_id=124 role=publisher_internal
+2026-11-06 19:16:09 [INFO] [rid=f73abc2998be] ← POST /api/v1/auth/register -> 200 (230.6ms)
+2026-11-06 19:18:53 [INFO] [rid=82bd2917a4ef] → POST /api/v1/auth/register
+2026-11-06 19:18:54 [INFO] [rid=82bd2917a4ef] ← POST /api/v1/auth/register -> 200 (130.6ms)
+2026-11-06 19:19:05 [INFO] [rid=6bf519e6a4cd] → POST /api/v1/auth/register
+2026-11-06 19:19:05 [INFO] [rid=6bf519e6a4cd] 注册成功 user_id=125 role=student
+2026-11-06 19:19:05 [INFO] [rid=6bf519e6a4cd] ← POST /api/v1/auth/register -> 200 (306.7ms)
+2026-11-06 19:19:24 [INFO] [rid=f47e77cce675] → POST /api/v1/activities/a1/signups
+2026-11-06 19:19:24 [INFO] [rid=f47e77cce675] 报名成功 user_id=125 activity_id=1 signup_id=111
+2026-11-06 19:19:24 [INFO] [rid=f47e77cce675] ← POST /api/v1/activities/a1/signups -> 200 (258.7ms)
+2026-11-06 19:19:30 [INFO] [rid=ac042d52fa13] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:19:30 [INFO] [rid=ac042d52fa13] ← POST /api/v1/activities/a3/checkins -> 200 (69.1ms)
+2026-11-06 19:19:35 [INFO] [rid=0b1b73f1fab9] → POST /api/v1/activities/a3/signups
+2026-11-06 19:19:35 [INFO] [rid=0b1b73f1fab9] 报名成功 user_id=125 activity_id=3 signup_id=112
+2026-11-06 19:19:35 [INFO] [rid=0b1b73f1fab9] ← POST /api/v1/activities/a3/signups -> 200 (241.2ms)
+2026-11-06 19:19:39 [INFO] [rid=53826e4460ec] → POST /api/v1/activities/a3/checkins
+2026-11-06 19:19:39 [INFO] [rid=53826e4460ec] 签到成功 user_id=125 activity_id=3
+2026-11-06 19:19:39 [INFO] [rid=53826e4460ec] ← POST /api/v1/activities/a3/checkins -> 200 (140.1ms)
+2026-11-06 19:19:44 [INFO] [rid=1b6504f2047d] → POST /api/v1/activities/a3/checkouts
+2026-11-06 19:19:44 [INFO] [rid=1b6504f2047d] 签退成功 user_id=125 activity_id=3
+2026-11-06 19:19:44 [INFO] [rid=1b6504f2047d] 生成待认定时长 user_id=125 activity_id=3 hours=2.0
+2026-11-06 19:19:44 [INFO] [rid=1b6504f2047d] ← POST /api/v1/activities/a3/checkouts -> 200 (370.1ms)
+2026-11-06 19:20:12 [INFO] [rid=19d543743222] → POST /api/v1/auth/register
+2026-11-06 19:20:13 [INFO] [rid=19d543743222] 注册成功 user_id=126 role=publisher_internal
+2026-11-06 19:20:13 [INFO] [rid=19d543743222] ← POST /api/v1/auth/register -> 200 (263.2ms)
+2026-11-06 19:21:19 [INFO] [rid=a6b37cadf00d] → POST /api/v1/auth/register
+2026-11-06 19:21:20 [INFO] [rid=a6b37cadf00d] 注册成功 user_id=127 role=admin
+2026-11-06 19:21:20 [INFO] [rid=a6b37cadf00d] ← POST /api/v1/auth/register -> 200 (291.9ms)
+2026-11-06 19:33:28 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-06 19:34:10 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-06 19:34:13 [INFO] [rid=65a43256ff53] → GET /api/v1/test-data
+2026-11-06 19:34:13 [INFO] [rid=65a43256ff53] ← GET /api/v1/test-data -> 200 (46.1ms)
+2026-11-06 20:42:47 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-06 20:42:50 [INFO] [rid=d53298eada5f] → GET /api/v1/test-data
+2026-11-06 20:42:50 [INFO] [rid=d53298eada5f] ← GET /api/v1/test-data -> 200 (42.6ms)
+2026-11-06 20:42:56 [INFO] [rid=2ccfed1434f2] → POST /api/v1/auth/login
+2026-11-06 20:42:56 [INFO] [rid=2ccfed1434f2] 登录成功 user_id=14 role=student
+2026-11-06 20:42:56 [INFO] [rid=2ccfed1434f2] ← POST /api/v1/auth/login -> 200 (119.3ms)
+2026-11-06 20:43:03 [INFO] [rid=0bbd58993f6b] → POST /api/v1/activities/a2/signups
+2026-11-06 20:43:03 [INFO] [rid=0bbd58993f6b] ← POST /api/v1/activities/a2/signups -> 200 (44.8ms)

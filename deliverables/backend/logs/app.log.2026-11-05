@@ -1,0 +1,141 @@
+2026-11-05 22:33:14 [INFO] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-05 22:33:56 [INFO] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-05 22:35:24 [INFO] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-05 22:35:30 [INFO] → GET /api/v1/health
+2026-11-05 22:35:30 [INFO] ← GET /api/v1/health -> 200 (1.9ms)
+2026-11-05 22:36:03 [INFO] → POST /api/v1/auth/register
+2026-11-05 22:36:03 [INFO] 注册成功 user_id=13 role=student
+2026-11-05 22:36:03 [INFO] ← POST /api/v1/auth/register -> 200 (412.8ms)
+2026-11-05 22:36:03 [INFO] → POST /api/v1/activities/a1/signups
+2026-11-05 22:36:03 [INFO] 报名成功 user_id=13 activity_id=1 signup_id=1
+2026-11-05 22:36:03 [INFO] ← POST /api/v1/activities/a1/signups -> 200 (107.0ms)
+2026-11-05 22:36:03 [INFO] → POST /api/v1/activities/a1/signups
+2026-11-05 22:36:03 [INFO] ← POST /api/v1/activities/a1/signups -> 200 (69.2ms)
+2026-11-05 22:36:03 [INFO] → POST /api/v1/activities/a5/signups
+2026-11-05 22:36:03 [INFO] ← POST /api/v1/activities/a5/signups -> 200 (28.3ms)
+2026-11-05 22:36:03 [INFO] → GET /api/v1/signups/mine
+2026-11-05 22:36:04 [INFO] ← GET /api/v1/signups/mine -> 200 (43.6ms)
+2026-11-05 22:36:04 [INFO] → POST /api/v1/activities/a1/checkins
+2026-11-05 22:36:04 [INFO] 签到成功 user_id=13 activity_id=1
+2026-11-05 22:36:04 [INFO] ← POST /api/v1/activities/a1/checkins -> 200 (78.6ms)
+2026-11-05 22:36:04 [INFO] → POST /api/v1/activities/a1/checkins
+2026-11-05 22:36:04 [INFO] ← POST /api/v1/activities/a1/checkins -> 200 (54.0ms)
+2026-11-05 22:36:04 [INFO] → POST /api/v1/activities/a1/checkouts
+2026-11-05 22:36:04 [INFO] 签退成功 user_id=13 activity_id=1
+2026-11-05 22:36:04 [INFO] ← POST /api/v1/activities/a1/checkouts -> 200 (78.8ms)
+2026-11-05 22:36:04 [INFO] → GET /api/v1/checkins/mine
+2026-11-05 22:36:04 [INFO] ← GET /api/v1/checkins/mine -> 200 (39.4ms)
+2026-11-05 22:36:04 [INFO] → GET /api/v1/activities/a1/signups
+2026-11-05 22:36:04 [INFO] ← GET /api/v1/activities/a1/signups -> 200 (28.0ms)
+2026-11-05 22:47:22 [INFO] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-05 22:47:24 [INFO] → GET /api/v1/test-data
+2026-11-05 22:47:24 [INFO] ← GET /api/v1/test-data -> 200 (29.5ms)
+2026-11-05 22:47:40 [INFO] → POST /api/v1/auth/login
+2026-11-05 22:47:40 [INFO] ← POST /api/v1/auth/login -> 200 (74.2ms)
+2026-11-05 22:48:36 [INFO] → POST /api/v1/auth/register
+2026-11-05 22:48:36 [INFO] 注册成功 user_id=14 role=student
+2026-11-05 22:48:36 [INFO] ← POST /api/v1/auth/register -> 200 (266.8ms)
+2026-11-05 22:56:21 [INFO] 青禾志愿后端启动 DB=sqlite 端口=8787
+2026-11-05 22:56:27 [INFO] → GET /api/v1/health
+2026-11-05 22:56:27 [INFO] ← GET /api/v1/health -> 200 (0.2ms)
+2026-11-05 22:56:42 [INFO] → GET /api/v1/test-data
+2026-11-05 22:56:42 [INFO] ← GET /api/v1/test-data -> 200 (5.1ms)
+2026-11-05 23:15:08 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-05 23:15:14 [INFO] → GET /api/v1/health
+2026-11-05 23:15:14 [INFO] ← GET /api/v1/health -> 200 (0.3ms)
+2026-11-05 23:16:41 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-05 23:16:47 [INFO] [rid=be94216926b2] → GET /api/v1/health
+2026-11-05 23:16:47 [INFO] [rid=be94216926b2] ← GET /api/v1/health -> 200 (0.4ms)
+2026-11-05 23:17:01 [INFO] [rid=-] 青禾志愿后端启动 DB=sqlite 端口=8787
+2026-11-05 23:17:07 [INFO] [rid=8846c406ecda] → GET /api/v1/health
+2026-11-05 23:17:07 [INFO] [rid=8846c406ecda] ← GET /api/v1/health -> 200 (0.2ms)
+2026-11-05 23:17:27 [INFO] [rid=8dd1508d6647] → POST /api/v1/auth/register
+2026-11-05 23:17:27 [INFO] [rid=8dd1508d6647] 注册成功 user_id=65 role=student
+2026-11-05 23:17:27 [INFO] [rid=8dd1508d6647] ← POST /api/v1/auth/register -> 200 (489.6ms)
+2026-11-05 23:17:27 [INFO] [rid=dc3c9d00015c] → POST /api/v1/auth/register
+2026-11-05 23:17:28 [INFO] [rid=dc3c9d00015c] 注册成功 user_id=66 role=admin
+2026-11-05 23:17:28 [INFO] [rid=dc3c9d00015c] ← POST /api/v1/auth/register -> 200 (476.7ms)
+2026-11-05 23:17:28 [INFO] [rid=aebd3fa91d9f] → POST /api/v1/activities/a4/signups
+2026-11-05 23:17:28 [INFO] [rid=aebd3fa91d9f] 报名成功 user_id=65 activity_id=4 signup_id=2
+2026-11-05 23:17:28 [INFO] [rid=aebd3fa91d9f] ← POST /api/v1/activities/a4/signups -> 200 (178.4ms)
+2026-11-05 23:17:28 [INFO] [rid=b8cdd38e8d55] → POST /api/v1/activities/a4/checkins
+2026-11-05 23:17:28 [INFO] [rid=b8cdd38e8d55] 签到成功 user_id=65 activity_id=4
+2026-11-05 23:17:28 [INFO] [rid=b8cdd38e8d55] ← POST /api/v1/activities/a4/checkins -> 200 (94.0ms)
+2026-11-05 23:17:28 [INFO] [rid=21040b98fc53] → POST /api/v1/activities/a4/checkouts
+2026-11-05 23:17:28 [INFO] [rid=21040b98fc53] 签退成功 user_id=65 activity_id=4
+2026-11-05 23:17:28 [INFO] [rid=21040b98fc53] 生成待认定时长 user_id=65 activity_id=4 hours=6.0
+2026-11-05 23:17:28 [INFO] [rid=21040b98fc53] ← POST /api/v1/activities/a4/checkouts -> 200 (239.5ms)
+2026-11-05 23:17:28 [INFO] [rid=c1360e7aec59] → GET /api/v1/hours/mine
+2026-11-05 23:17:28 [INFO] [rid=c1360e7aec59] ← GET /api/v1/hours/mine -> 200 (45.0ms)
+2026-11-05 23:17:28 [INFO] [rid=624b1ac2a809] → GET /api/v1/hours/pending
+2026-11-05 23:17:28 [INFO] [rid=624b1ac2a809] ← GET /api/v1/hours/pending -> 200 (40.1ms)
+2026-11-05 23:17:28 [INFO] [rid=591b046353a7] → POST /api/v1/hours/1/verify
+2026-11-05 23:17:28 [INFO] [rid=591b046353a7] 时长认定通过 hours_id=1 by=66
+2026-11-05 23:17:28 [INFO] [rid=591b046353a7] ← POST /api/v1/hours/1/verify -> 200 (71.8ms)
+2026-11-05 23:17:28 [INFO] [rid=0356e05d9664] → POST /api/v1/certificates
+2026-11-05 23:17:28 [INFO] [rid=0356e05d9664] 生成证书 cert_id=1 cert_no=QH-2026-72DE6446 user_id=65
+2026-11-05 23:17:28 [INFO] [rid=0356e05d9664] ← POST /api/v1/certificates -> 200 (63.5ms)
+2026-11-05 23:17:28 [INFO] [rid=ab8959dc762a] → GET /api/v1/verify
+2026-11-05 23:17:28 [INFO] [rid=ab8959dc762a] ← GET /api/v1/verify -> 200 (38.9ms)
+2026-11-05 23:17:28 [INFO] [rid=491bfc56d54b] → POST /api/v1/appeals
+2026-11-05 23:17:28 [INFO] [rid=491bfc56d54b] 提交申诉 appeal_id=1 hours_id=1 user_id=65
+2026-11-05 23:17:28 [INFO] [rid=491bfc56d54b] ← POST /api/v1/appeals -> 200 (123.6ms)
+2026-11-05 23:17:28 [INFO] [rid=cc2a64504d64] → GET /api/v1/appeals/pending
+2026-11-05 23:17:28 [INFO] [rid=cc2a64504d64] ← GET /api/v1/appeals/pending -> 200 (38.4ms)
+2026-11-05 23:17:28 [INFO] [rid=ac63cab62045] → POST /api/v1/appeals/1/resolve
+2026-11-05 23:17:29 [INFO] [rid=ac63cab62045] 处理申诉 appeal_id=1 action=approve by=66
+2026-11-05 23:17:29 [INFO] [rid=ac63cab62045] ← POST /api/v1/appeals/1/resolve -> 200 (109.5ms)
+2026-11-05 23:17:29 [INFO] [rid=f7d203d47f16] → GET /api/v1/hours/pending
+2026-11-05 23:17:29 [INFO] [rid=f7d203d47f16] ← GET /api/v1/hours/pending -> 403 (0.3ms)
+2026-11-05 23:17:38 [INFO] [rid=my-trace-001] → GET /api/v1/health
+2026-11-05 23:17:38 [INFO] [rid=my-trace-001] ← GET /api/v1/health -> 200 (0.2ms)
+2026-11-05 23:17:38 [INFO] [rid=9da2a5c6ff31] → GET /api/v1/health
+2026-11-05 23:17:38 [INFO] [rid=9da2a5c6ff31] ← GET /api/v1/health -> 200 (0.3ms)
+2026-11-05 23:20:04 [INFO] [rid=9e7dae700511] → GET /api/v1/test-data
+2026-11-05 23:20:04 [INFO] [rid=9e7dae700511] ← GET /api/v1/test-data -> 200 (7.7ms)
+2026-11-05 23:21:01 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-05 23:21:07 [INFO] [rid=e54d4ef6ae71] → GET /api/v1/health
+2026-11-05 23:21:07 [INFO] [rid=e54d4ef6ae71] ← GET /api/v1/health -> 200 (0.2ms)
+2026-11-05 23:21:08 [INFO] [rid=6a1e9974fa59] → POST /api/v1/auth/register
+2026-11-05 23:21:08 [INFO] [rid=6a1e9974fa59] 注册成功 user_id=8 role=student
+2026-11-05 23:21:08 [INFO] [rid=6a1e9974fa59] ← POST /api/v1/auth/register -> 200 (376.0ms)
+2026-11-05 23:21:08 [INFO] [rid=ce50ab90a1e3] → POST /api/v1/activities/a4/signups
+2026-11-05 23:21:08 [INFO] [rid=ce50ab90a1e3] 报名成功 user_id=8 activity_id=4 signup_id=1
+2026-11-05 23:21:08 [INFO] [rid=ce50ab90a1e3] ← POST /api/v1/activities/a4/signups -> 200 (25.3ms)
+2026-11-05 23:21:08 [INFO] [rid=dd2bb07edbcc] → POST /api/v1/activities/a4/checkins
+2026-11-05 23:21:08 [INFO] [rid=dd2bb07edbcc] 签到成功 user_id=8 activity_id=4
+2026-11-05 23:21:08 [INFO] [rid=dd2bb07edbcc] ← POST /api/v1/activities/a4/checkins -> 200 (13.9ms)
+2026-11-05 23:21:08 [INFO] [rid=bd59d924c32a] → POST /api/v1/activities/a4/checkouts
+2026-11-05 23:21:08 [INFO] [rid=bd59d924c32a] 签退成功 user_id=8 activity_id=4
+2026-11-05 23:21:08 [INFO] [rid=bd59d924c32a] 生成待认定时长 user_id=8 activity_id=4 hours=6.0
+2026-11-05 23:21:08 [INFO] [rid=bd59d924c32a] ← POST /api/v1/activities/a4/checkouts -> 200 (29.5ms)
+2026-11-05 23:21:08 [INFO] [rid=b7f37be20f46] → GET /api/v1/hours/mine
+2026-11-05 23:21:08 [INFO] [rid=b7f37be20f46] ← GET /api/v1/hours/mine -> 200 (2.2ms)
+2026-11-05 23:22:16 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-05 23:22:27 [INFO] [rid=c566c8e557fd] → GET /api/v1/health
+2026-11-05 23:22:27 [INFO] [rid=c566c8e557fd] ← GET /api/v1/health -> 200 (0.4ms)
+2026-11-05 23:22:28 [INFO] [rid=c5f5a0695d4b] → POST /api/v1/auth/register
+2026-11-05 23:22:28 [INFO] [rid=c5f5a0695d4b] 注册成功 user_id=67 role=student
+2026-11-05 23:22:28 [INFO] [rid=c5f5a0695d4b] ← POST /api/v1/auth/register -> 200 (555.8ms)
+2026-11-05 23:22:28 [INFO] [rid=bec00248f9d0] → POST /api/v1/activities/a4/signups
+2026-11-05 23:22:29 [INFO] [rid=bec00248f9d0] 报名成功 user_id=67 activity_id=4 signup_id=3
+2026-11-05 23:22:29 [INFO] [rid=bec00248f9d0] ← POST /api/v1/activities/a4/signups -> 200 (209.9ms)
+2026-11-05 23:22:29 [INFO] [rid=ef4456c3d38b] → POST /api/v1/activities/a4/checkins
+2026-11-05 23:22:29 [INFO] [rid=ef4456c3d38b] 签到成功 user_id=67 activity_id=4
+2026-11-05 23:22:29 [INFO] [rid=ef4456c3d38b] ← POST /api/v1/activities/a4/checkins -> 200 (125.9ms)
+2026-11-05 23:22:29 [INFO] [rid=9947a1f05d3d] → POST /api/v1/activities/a4/checkouts
+2026-11-05 23:22:29 [INFO] [rid=9947a1f05d3d] 签退成功 user_id=67 activity_id=4
+2026-11-05 23:22:29 [INFO] [rid=9947a1f05d3d] 生成待认定时长 user_id=67 activity_id=4 hours=6.0
+2026-11-05 23:22:29 [INFO] [rid=9947a1f05d3d] ← POST /api/v1/activities/a4/checkouts -> 200 (255.5ms)
+2026-11-05 23:22:29 [INFO] [rid=1c20afaa90a0] → GET /api/v1/hours/mine
+2026-11-05 23:22:29 [INFO] [rid=1c20afaa90a0] ← GET /api/v1/hours/mine -> 200 (25.8ms)
+2026-11-05 23:22:29 [INFO] [rid=4b923131d5e8] → POST /api/v1/auth/register
+2026-11-05 23:22:30 [INFO] [rid=4b923131d5e8] 注册成功 user_id=68 role=admin
+2026-11-05 23:22:30 [INFO] [rid=4b923131d5e8] ← POST /api/v1/auth/register -> 200 (718.0ms)
+2026-11-05 23:22:30 [INFO] [rid=4d71bebd4d70] → POST /api/v1/hours/2/verify
+2026-11-05 23:22:30 [INFO] [rid=4d71bebd4d70] 时长认定通过 hours_id=2 by=68
+2026-11-05 23:22:30 [INFO] [rid=4d71bebd4d70] ← POST /api/v1/hours/2/verify -> 200 (92.9ms)
+2026-11-05 23:22:30 [INFO] [rid=8e34d8fe43f7] → POST /api/v1/certificates
+2026-11-05 23:22:30 [INFO] [rid=8e34d8fe43f7] 生成证书 cert_id=2 cert_no=QH-2026-F47FC66A user_id=67
+2026-11-05 23:22:30 [INFO] [rid=8e34d8fe43f7] ← POST /api/v1/certificates -> 200 (88.8ms)
+2026-11-05 23:33:47 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787

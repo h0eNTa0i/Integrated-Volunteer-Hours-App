@@ -1,0 +1,37 @@
+2026-11-21 14:14:17 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-21 14:14:23 [INFO] [rid=f66782807696] → GET /api/v1/health
+2026-11-21 14:14:23 [INFO] [rid=f66782807696] ← GET /api/v1/health -> 200 (0.2ms)
+2026-11-21 14:14:39 [INFO] [rid=f9a7083bcc58] → POST /api/v1/auth/register
+2026-11-21 14:14:40 [INFO] [rid=f9a7083bcc58] 注册成功 user_id=171 role=student
+2026-11-21 14:14:40 [INFO] [rid=f9a7083bcc58] ← POST /api/v1/auth/register -> 200 (436.4ms)
+2026-11-21 14:14:40 [INFO] [rid=1f966687f667] → POST /api/v1/activities/a4/signups
+2026-11-21 14:14:40 [INFO] [rid=1f966687f667] 报名成功 user_id=171 activity_id=4 signup_id=157
+2026-11-21 14:14:40 [INFO] [rid=1f966687f667] ← POST /api/v1/activities/a4/signups -> 200 (150.7ms)
+2026-11-21 14:14:40 [INFO] [rid=529e3991e309] → GET /api/v1/signups/mine
+2026-11-21 14:14:40 [INFO] [rid=529e3991e309] ← GET /api/v1/signups/mine -> 200 (44.0ms)
+2026-11-21 14:14:40 [INFO] [rid=b6a9a810da04] → DELETE /api/v1/signups/157
+2026-11-21 14:14:40 [INFO] [rid=b6a9a810da04] 取消报名 user_id=171 signup_id=157
+2026-11-21 14:14:40 [INFO] [rid=b6a9a810da04] ← DELETE /api/v1/signups/157 -> 200 (152.6ms)
+2026-11-21 14:14:40 [INFO] [rid=0f6f8db47b5b] → GET /api/v1/signups/mine
+2026-11-21 14:14:40 [INFO] [rid=0f6f8db47b5b] ← GET /api/v1/signups/mine -> 200 (43.7ms)
+2026-11-21 14:14:40 [INFO] [rid=1a7a6d1bfd6d] → POST /api/v1/activities/a4/signups
+2026-11-21 14:14:40 [INFO] [rid=1a7a6d1bfd6d] 报名成功 user_id=171 activity_id=4 signup_id=157
+2026-11-21 14:14:40 [INFO] [rid=1a7a6d1bfd6d] ← POST /api/v1/activities/a4/signups -> 200 (152.7ms)
+2026-11-21 14:14:40 [INFO] [rid=450dbcd38a16] → POST /api/v1/activities/a4/checkins
+2026-11-21 14:14:40 [INFO] [rid=450dbcd38a16] 签到成功 user_id=171 activity_id=4
+2026-11-21 14:14:40 [INFO] [rid=450dbcd38a16] ← POST /api/v1/activities/a4/checkins -> 200 (58.5ms)
+2026-11-21 14:14:40 [INFO] [rid=b1e136e9634f] → POST /api/v1/activities/a4/checkouts
+2026-11-21 14:14:40 [INFO] [rid=b1e136e9634f] 签退成功 user_id=171 activity_id=4
+2026-11-21 14:14:41 [INFO] [rid=b1e136e9634f] 生成待认定时长 user_id=171 activity_id=4 hours=6.0
+2026-11-21 14:14:41 [INFO] [rid=b1e136e9634f] ← POST /api/v1/activities/a4/checkouts -> 200 (228.9ms)
+2026-11-21 14:14:41 [INFO] [rid=6bb84d2b1e8b] → GET /api/v1/checkins/mine
+2026-11-21 14:14:41 [INFO] [rid=6bb84d2b1e8b] ← GET /api/v1/checkins/mine -> 200 (19.1ms)
+2026-11-21 14:14:41 [INFO] [rid=8f9d3185e1f2] → GET /api/v1/activities/a4/signups
+2026-11-21 14:14:41 [INFO] [rid=8f9d3185e1f2] ← GET /api/v1/activities/a4/signups -> 200 (37.5ms)
+2026-11-21 18:57:14 [INFO] [rid=-] 青禾志愿后端启动 DB=mysql 端口=8787
+2026-11-21 18:57:16 [INFO] [rid=f4bf8e975252] → GET /api/v1/test-data
+2026-11-21 18:57:16 [INFO] [rid=f4bf8e975252] ← GET /api/v1/test-data -> 200 (33.0ms)
+2026-11-21 18:57:16 [INFO] [rid=a75b46190707] → GET /api/v1/signups/mine
+2026-11-21 18:57:16 [INFO] [rid=4d0ebe8547fa] → GET /api/v1/checkins/mine
+2026-11-21 18:57:16 [INFO] [rid=4d0ebe8547fa] ← GET /api/v1/checkins/mine -> 200 (48.6ms)
+2026-11-21 18:57:16 [INFO] [rid=a75b46190707] ← GET /api/v1/signups/mine -> 200 (50.6ms)
